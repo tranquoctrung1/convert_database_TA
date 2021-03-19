@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="639c876fb6a64818bee3c0ba199d1eb6" Name="Diagram1">
+        <EntityTypeShape EntityType="tawaco2Model.t_Accreditation_Types" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Accreditations" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Alarm_Configurations" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Alarms" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Channel_Configurations" Width="1.5" PointX="6" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Consumers" Width="1.5" PointX="3.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Data_Complexes" Width="1.5" PointX="6" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Data_Raw_Indexes" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_DisplayGroups" Width="1.5" PointX="3.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Language" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_LanguageTranslate" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Logger_Configurations" Width="1.5" PointX="3.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Logger_Files" Width="1.5" PointX="6" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Logger_Histories" Width="1.5" PointX="11.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Loggers" Width="1.5" PointX="3.75" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Meter_Files" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Meter_Histories" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Meters" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_RoleFunction" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Roles" Width="1.5" PointX="3.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Site_Files" Width="1.5" PointX="8.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Sites" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Staffs" Width="1.5" PointX="3.75" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_SysParam" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Transmitter_Files" Width="1.5" PointX="3" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Transmitter_Histories" Width="1.5" PointX="3" PointY="42" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Transmitters" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Units" Width="1.5" PointX="3.75" PointY="35.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Users" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="tawaco2Model.t_Site_Availabilities" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Accreditations_t_Accreditation_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Accreditations_t_Meters" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Accreditations_t_Transmitters" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Channel_Configurations_t_Logger_Configurations" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Channel_Configurations_t_Units" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Sites_t_Consumers" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Users_t_Consumers" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Data_Complexes_t_Logger_Configurations" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Data_Raw_Indexes_t_Sites" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Sites_t_DisplayGroups1" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Sites_t_Logger_Configurations" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Logger_Files_t_Loggers" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Logger_Histories_t_Loggers2" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Logger_Histories_t_Sites" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Sites_t_Loggers" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Meter_Files_t_Meters" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Meter_Histories_t_Meters2" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Sites_t_Meters" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Users_t_Roles1" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Site_Files_t_Sites" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Sites_t_Transmitters" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Users_t_Staffs" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Transmitter_Files_t_Transmitters" ManuallyRouted="false" />
+        <AssociationConnector Association="tawaco2Model.FK_t_Transmitter_Histories_t_Transmitters" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

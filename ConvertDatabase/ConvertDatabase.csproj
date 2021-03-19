@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6F9C23F1-D77C-4B1E-A30F-F149BA085E31}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ConvertDatabase</RootNamespace>
+    <AssemblyName>ConvertDatabase</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.5.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.5.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Action\ConvertSiteAction.cs" />
+    <Compile Include="Action\GetSiteOldDBACtion.cs" />
+    <Compile Include="Action\InsertSiteNewDBAction.cs" />
+    <Compile Include="DeviceTokenApp.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewInsertCommand_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="NewSelectCommand_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewUpdateCommand_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OldModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OldModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OldModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OldModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OldModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="p_Calculate_Daily_Data_DMA_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="p_Calculate_Daily_Site_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="p_Calculate_Hourly_Data_DMA_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="p_Calculate_Hourly_Site_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="p_Calculate_Monthly_Data_DMA_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="p_Calculate_Monthly_Site_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="p_Calculate_Yearly_Site_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="p_GetChannelByLoggerId_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="p_Get_Data_Logger_Complex_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="p_History_Site_Delete_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="p_Map_GetChannels_ByLoggerId_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="p_Map_GetSites_ByCompany_Result.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Statis\StatisNameDatabase.cs" />
+    <Compile Include="t_Accreditations.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Accreditation_Types.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Alarms.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Alarm_Configurations.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Channel_Configurations.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Consumers.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Data_Complexes.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Data_Manual.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Data_Raw_Indexes.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Devices_ChannelsConfigs.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Devices_Loggers.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Devices_Meters.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Devices_Meter_Accreditation_Type.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Devices_SitesConfigs.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Devices_Status.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Devices_Transmitters.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Devices_Units.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_DisplayGroups.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Gis_Sites.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_History_Sites.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_History_Site_Loggers.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_History_Site_Meters.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_History_Site_Transmitters.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Language.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_LanguageTranslate.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Loggers.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Logger_Configurations.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Logger_Files.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Logger_Histories.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Meters.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Meter_Files.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Meter_Histories.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_RoleFunction.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Roles.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Sites.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Site_Availabilities.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Site_Companies.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Site_Covers.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Site_Files.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Site_Group2s.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Site_Group3s.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Site_Group4s.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Site_Group5s.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Site_Groups.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Site_Levels.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Site_MeterDirections.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Site_Sites.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Site_Status.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Site_ViewGroups.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Staffs.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_SysParam.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Transmitters.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Transmitter_Files.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Transmitter_Histories.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Units.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Users.cs">
+      <DependentUpon>OldModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_User_Roles.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_User_Staffs.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_User_Users.cs">
+      <DependentUpon>NewModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="NewModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NewModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="NewModel.edmx.diagram">
+      <DependentUpon>NewModel.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="OldModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OldModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="OldModel.edmx.diagram">
+      <DependentUpon>OldModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NewModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NewModel.Context.cs</LastGenOutput>
+      <DependentUpon>NewModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="NewModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NewModel.edmx</DependentUpon>
+      <LastGenOutput>NewModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="OldModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OldModel.edmx</DependentUpon>
+      <LastGenOutput>OldModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="OldModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OldModel.edmx</DependentUpon>
+      <LastGenOutput>OldModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
