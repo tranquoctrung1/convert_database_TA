@@ -1,0 +1,915 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tawaco2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="t_Accreditation_Types">
+    <Key>
+      <PropertyRef Name="Type" />
+    </Key>
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="t_Accreditations">
+    <Key>
+      <PropertyRef Name="AccreditationDocument" />
+    </Key>
+    <Property Name="AccreditationDocument" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MeterSerial" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TransmitterSerial" Type="varchar" MaxLength="50" />
+    <Property Name="AccreditationType" Type="varchar" MaxLength="50" />
+    <Property Name="AccreditationDate" Type="datetime" Nullable="false" />
+    <Property Name="ExpiryDate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="t_Alarm_Configurations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SiteId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNr" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ena1" Type="bit" />
+    <Property Name="Ena2" Type="bit" />
+    <Property Name="Ena3" Type="bit" />
+    <Property Name="Ena4" Type="bit" />
+    <Property Name="Ena" Type="bit" />
+    <Property Name="Note" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tawaco2.dbo.t_Alarm_Failed' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_Alarm_Failed">
+          <Property Name="AlarmId" Type="int" />
+          <Property Name="AlarmConfiguration" Type="int" />
+          <Property Name="Failed" Type="bit" />
+        </EntityType>-->
+  <EntityType Name="t_Alarms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SiteId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SiteName" Type="nvarchar" MaxLength="256" />
+    <Property Name="ChannelId" Type="varchar" MaxLength="50" />
+    <Property Name="ChannelName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Timestamp" Type="datetime" Nullable="false" />
+    <Property Name="Msg1" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Msg2" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Msg3" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Msg4" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Trigger" Type="bit" />
+  </EntityType>
+  <EntityType Name="t_Channel_Configurations">
+    <Key>
+      <PropertyRef Name="ChannelId" />
+    </Key>
+    <Property Name="ChannelId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoggerId" Type="varchar" MaxLength="50" />
+    <Property Name="ChannelName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Pressure1" Type="bit" />
+    <Property Name="Pressure2" Type="bit" />
+    <Property Name="ForwardFlow" Type="bit" />
+    <Property Name="ReverseFlow" Type="bit" />
+    <Property Name="TimeStamp" Type="datetime" />
+    <Property Name="LastValue" Type="float" />
+    <Property Name="IndexTimeStamp" Type="datetime" />
+    <Property Name="LastIndex" Type="float" />
+    <Property Name="DisplayOnLabel" Type="bit" />
+  </EntityType>
+  <EntityType Name="t_Consumers">
+    <Key>
+      <PropertyRef Name="ConsumerId" />
+    </Key>
+    <Property Name="ConsumerId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Zoom" Type="tinyint" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="t_Data_Complexes">
+    <Key>
+      <PropertyRef Name="LoggerId" />
+      <PropertyRef Name="TimeStamp" />
+    </Key>
+    <Property Name="LoggerId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+    <Property Name="ForwardFlow" Type="float" />
+    <Property Name="ReverseFlow" Type="float" />
+    <Property Name="ForwardIndex" Type="float" />
+    <Property Name="ReverseIndex" Type="float" />
+    <Property Name="Pressure1" Type="float" />
+    <Property Name="Pressure2" Type="float" />
+    <Property Name="MinForwardFlow" Type="float" />
+    <Property Name="MaxForwardFlow" Type="float" />
+    <Property Name="MinReverseFlow" Type="float" />
+    <Property Name="MaxReverseFlow" Type="float" />
+    <Property Name="MinPressure1" Type="float" />
+    <Property Name="MaxPressure1" Type="float" />
+    <Property Name="MinPressure2" Type="float" />
+    <Property Name="MaxPressure2" Type="float" />
+  </EntityType>
+  <EntityType Name="t_Data_Raw_Indexes">
+    <Key>
+      <PropertyRef Name="SiteId" />
+      <PropertyRef Name="TimeStamp" />
+    </Key>
+    <Property Name="SiteId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+    <Property Name="Index" Type="float" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tawaco2.dbo.t_Device_Status' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_Device_Status">
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Language" Type="nchar" MaxLength="10" />
+        </EntityType>-->
+  <EntityType Name="t_DisplayGroups">
+    <Key>
+      <PropertyRef Name="Group" />
+    </Key>
+    <Property Name="Group" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="t_Language">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="LangCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" MaxLength="500" />
+    <Property Name="Noted" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="t_LanguageTranslate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ControlId" Type="nvarchar" MaxLength="200" />
+    <Property Name="Contents" Type="nvarchar" MaxLength="500" />
+    <Property Name="Noted" Type="nvarchar" MaxLength="500" />
+    <Property Name="Language" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="t_Logger_Configurations">
+    <Key>
+      <PropertyRef Name="LoggerId" />
+    </Key>
+    <Property Name="LoggerId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SiteId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StartHour" Type="tinyint" />
+    <Property Name="TelephoneNumber" Type="varchar" MaxLength="50" />
+    <Property Name="Pressure1" Type="tinyint" />
+    <Property Name="Pressure2" Type="tinyint" />
+    <Property Name="ForwardFlow" Type="tinyint" />
+    <Property Name="ReverseFlow" Type="tinyint" />
+    <Property Name="Alarm" Type="bit" />
+    <Property Name="TimeDelayAlarm" Type="int" />
+    <Property Name="Interval" Type="tinyint" />
+    <Property Name="Status1" Type="bit" />
+    <Property Name="Status2" Type="bit" />
+    <Property Name="TimeOffset" Type="int" />
+  </EntityType>
+  <EntityType Name="t_Logger_Files">
+    <Key>
+      <PropertyRef Name="FileID" />
+    </Key>
+    <Property Name="FileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="LoggerSerial" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MIMEType" Type="varchar" MaxLength="4000" />
+    <Property Name="Size" Type="int" />
+    <Property Name="Path" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UploadDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="t_Logger_Histories">
+    <Key>
+      <PropertyRef Name="HistoryID" />
+    </Key>
+    <Property Name="HistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SiteID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateChanged" Type="datetime" Nullable="false" />
+    <Property Name="OldLoggerSerial" Type="varchar" MaxLength="50" />
+    <Property Name="NewLoggerSerial" Type="varchar" MaxLength="50" />
+    <Property Name="Index" Type="float" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="t_Loggers">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReceiptDate" Type="datetime" />
+    <Property Name="Provider" Type="varchar" MaxLength="50" />
+    <Property Name="Marks" Type="varchar" MaxLength="50" />
+    <Property Name="Model" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Installed" Type="bit" />
+  </EntityType>
+  <EntityType Name="t_Meter_Files">
+    <Key>
+      <PropertyRef Name="FileID" />
+    </Key>
+    <Property Name="FileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="MeterSerial" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MIMEType" Type="varchar" MaxLength="4000" />
+    <Property Name="Size" Type="int" />
+    <Property Name="Path" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UploadDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="t_Meter_Histories">
+    <Key>
+      <PropertyRef Name="HistoryID" />
+    </Key>
+    <Property Name="HistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SiteID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateChanged" Type="datetime" Nullable="false" />
+    <Property Name="OldMeterSerial" Type="varchar" MaxLength="50" />
+    <Property Name="OldAccreditation" Type="varchar" MaxLength="50" />
+    <Property Name="OldIndex" Type="float" />
+    <Property Name="NewMeterSerial" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NewAccreditation" Type="varchar" MaxLength="50" />
+    <Property Name="NewIndex" Type="float" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="t_Meters">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReceiptDate" Type="datetime" />
+    <Property Name="Provider" Type="varchar" MaxLength="50" />
+    <Property Name="Marks" Type="varchar" MaxLength="50" />
+    <Property Name="Size" Type="smallint" />
+    <Property Name="Model" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Installed" Type="bit" />
+    <Property Name="AccreditationDocument" Type="varchar" MaxLength="50" />
+    <Property Name="ApprovalDecision" Type="varchar" MaxLength="50" />
+    <Property Name="ApprovedDate" Type="datetime" />
+    <Property Name="Approved" Type="bit" />
+  </EntityType>
+  <EntityType Name="t_RoleFunction">
+    <Key>
+      <PropertyRef Name="Role" />
+      <PropertyRef Name="FunctionId" />
+    </Key>
+    <Property Name="Role" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="FunctionId" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="t_Roles">
+    <Key>
+      <PropertyRef Name="Role" />
+    </Key>
+    <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tawaco2.dbo.t_Site_Availabilities' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="t_Site_Availabilities">
+    <Key>
+      <PropertyRef Name="Availability" />
+    </Key>
+    <Property Name="Availability" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Language" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="t_Site_Files">
+    <Key>
+      <PropertyRef Name="FileID" />
+    </Key>
+    <Property Name="FileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="SiteID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MIMEType" Type="varchar" MaxLength="4000" />
+    <Property Name="Size" Type="int" />
+    <Property Name="Path" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UploadDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tawaco2.dbo.t_Site_Status' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_Site_Status">
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Language" Type="nchar" MaxLength="10" />
+        </EntityType>-->
+  <EntityType Name="t_Sites">
+    <Key>
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="SiteId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SiteAliasName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Location" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Latitude" Type="float" />
+    <Property Name="Longitude" Type="float" />
+    <Property Name="DisplayGroup" Type="varchar" MaxLength="50" />
+    <Property Name="Zoom" Type="tinyint" />
+    <Property Name="ConsumerId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoggerId" Type="varchar" MaxLength="50" />
+    <Property Name="StartDay" Type="tinyint" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+    <Property Name="MeterSerial" Type="varchar" MaxLength="50" />
+    <Property Name="TransmitterSerial" Type="varchar" MaxLength="50" />
+    <Property Name="LoggerSerial" Type="varchar" MaxLength="50" />
+    <Property Name="MeterDateChanged" Type="datetime" />
+    <Property Name="TransmitterDateChanged" Type="datetime" />
+    <Property Name="LoggerDateChanged" Type="datetime" />
+    <Property Name="Availability" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Staffs" Type="varchar(max)" />
+    <Property Name="LabelAnchorX" Type="int" />
+    <Property Name="LabelAnchorY" Type="int" />
+    <Property Name="LabelLat" Type="float" />
+    <Property Name="LabelLng" Type="float" />
+    <Property Name="PipeSize" Type="nvarchar" MaxLength="50" />
+    <Property Name="SetDelayTime" Type="int" />
+    <Property Name="SetDiffValue" Type="float" />
+    <Property Name="Baseline" Type="float" />
+  </EntityType>
+  <EntityType Name="t_Staffs">
+    <Key>
+      <PropertyRef Name="StaffId" />
+    </Key>
+    <Property Name="StaffId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Address" Type="nvarchar" MaxLength="4000" />
+    <Property Name="TelephoneNumber" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="t_SysParam">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Val" Type="nvarchar(max)" />
+    <Property Name="Val2" Type="nvarchar" MaxLength="200" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsSystem" Type="bit" />
+    <Property Name="Activated" Type="bit" Nullable="false" />
+    <Property Name="LanguageId" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="t_Transmitter_Files">
+    <Key>
+      <PropertyRef Name="FileID" />
+    </Key>
+    <Property Name="FileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="TransmitterSerial" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MIMEType" Type="varchar" MaxLength="4000" />
+    <Property Name="Size" Type="int" />
+    <Property Name="Path" Type="nvarchar" MaxLength="4000" />
+    <Property Name="UploadDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="t_Transmitter_Histories">
+    <Key>
+      <PropertyRef Name="HistoryID" />
+    </Key>
+    <Property Name="HistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SiteID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateChanged" Type="datetime" Nullable="false" />
+    <Property Name="OldTransmitterSerial" Type="varchar" MaxLength="50" />
+    <Property Name="OldAccreditation" Type="varchar" MaxLength="50" />
+    <Property Name="NewTransmitterSerial" Type="varchar" MaxLength="50" />
+    <Property Name="NewAccreditation" Type="varchar" MaxLength="50" />
+    <Property Name="Index" Type="float" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="t_Transmitters">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReceiptDate" Type="datetime" />
+    <Property Name="Provider" Type="varchar" MaxLength="50" />
+    <Property Name="Marks" Type="varchar" MaxLength="50" />
+    <Property Name="Size" Type="smallint" />
+    <Property Name="Model" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Installed" Type="bit" />
+    <Property Name="AccreditationDocument" Type="varchar" MaxLength="50" />
+    <Property Name="ApprovalDecision" Type="varchar" MaxLength="50" />
+    <Property Name="ApprovedDate" Type="datetime" />
+    <Property Name="Approved" Type="bit" />
+  </EntityType>
+  <EntityType Name="t_Units">
+    <Key>
+      <PropertyRef Name="Unit" />
+    </Key>
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="t_Users">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Salt" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StaffId" Type="varchar" MaxLength="50" />
+    <Property Name="ConsumerId" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="TimeStamp" Type="datetime" />
+    <Property Name="Ip" Type="nvarchar" MaxLength="50" />
+    <Property Name="LoginTime" Type="int" />
+    <Property Name="SetDelayTime" Type="int" />
+    <Property Name="SetDiffValue" Type="float" />
+    <Property Name="Language" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_t_Accreditations_t_Accreditation_Types">
+    <End Role="t_Accreditation_Types" Type="Self.t_Accreditation_Types" Multiplicity="0..1" />
+    <End Role="t_Accreditations" Type="Self.t_Accreditations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Accreditation_Types">
+        <PropertyRef Name="Type" />
+      </Principal>
+      <Dependent Role="t_Accreditations">
+        <PropertyRef Name="AccreditationType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Accreditations_t_Meters">
+    <End Role="t_Meters" Type="Self.t_Meters" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_Accreditations" Type="Self.t_Accreditations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Meters">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="t_Accreditations">
+        <PropertyRef Name="MeterSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Accreditations_t_Transmitters">
+    <End Role="t_Transmitters" Type="Self.t_Transmitters" Multiplicity="0..1" />
+    <End Role="t_Accreditations" Type="Self.t_Accreditations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Transmitters">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="t_Accreditations">
+        <PropertyRef Name="TransmitterSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Channel_Configurations_t_Logger_Configurations">
+    <End Role="t_Logger_Configurations" Type="Self.t_Logger_Configurations" Multiplicity="0..1" />
+    <End Role="t_Channel_Configurations" Type="Self.t_Channel_Configurations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Logger_Configurations">
+        <PropertyRef Name="LoggerId" />
+      </Principal>
+      <Dependent Role="t_Channel_Configurations">
+        <PropertyRef Name="LoggerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Channel_Configurations_t_Units">
+    <End Role="t_Units" Type="Self.t_Units" Multiplicity="0..1" />
+    <End Role="t_Channel_Configurations" Type="Self.t_Channel_Configurations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Units">
+        <PropertyRef Name="Unit" />
+      </Principal>
+      <Dependent Role="t_Channel_Configurations">
+        <PropertyRef Name="Unit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Data_Complexes_t_Logger_Configurations">
+    <End Role="t_Logger_Configurations" Type="Self.t_Logger_Configurations" Multiplicity="1" />
+    <End Role="t_Data_Complexes" Type="Self.t_Data_Complexes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Logger_Configurations">
+        <PropertyRef Name="LoggerId" />
+      </Principal>
+      <Dependent Role="t_Data_Complexes">
+        <PropertyRef Name="LoggerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Data_Raw_Indexes_t_Sites">
+    <End Role="t_Sites" Type="Self.t_Sites" Multiplicity="1" />
+    <End Role="t_Data_Raw_Indexes" Type="Self.t_Data_Raw_Indexes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Sites">
+        <PropertyRef Name="SiteId" />
+      </Principal>
+      <Dependent Role="t_Data_Raw_Indexes">
+        <PropertyRef Name="SiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Logger_Files_t_Loggers">
+    <End Role="t_Loggers" Type="Self.t_Loggers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_Logger_Files" Type="Self.t_Logger_Files" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Loggers">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="t_Logger_Files">
+        <PropertyRef Name="LoggerSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Logger_Histories_t_Loggers2">
+    <End Role="t_Loggers" Type="Self.t_Loggers" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_Logger_Histories" Type="Self.t_Logger_Histories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Loggers">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="t_Logger_Histories">
+        <PropertyRef Name="NewLoggerSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Logger_Histories_t_Sites">
+    <End Role="t_Sites" Type="Self.t_Sites" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_Logger_Histories" Type="Self.t_Logger_Histories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Sites">
+        <PropertyRef Name="SiteId" />
+      </Principal>
+      <Dependent Role="t_Logger_Histories">
+        <PropertyRef Name="SiteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Meter_Files_t_Meters">
+    <End Role="t_Meters" Type="Self.t_Meters" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_Meter_Files" Type="Self.t_Meter_Files" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Meters">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="t_Meter_Files">
+        <PropertyRef Name="MeterSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Meter_Histories_t_Meters2">
+    <End Role="t_Meters" Type="Self.t_Meters" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_Meter_Histories" Type="Self.t_Meter_Histories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Meters">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="t_Meter_Histories">
+        <PropertyRef Name="NewMeterSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Site_Files_t_Sites">
+    <End Role="t_Sites" Type="Self.t_Sites" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_Site_Files" Type="Self.t_Site_Files" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Sites">
+        <PropertyRef Name="SiteId" />
+      </Principal>
+      <Dependent Role="t_Site_Files">
+        <PropertyRef Name="SiteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Sites_t_Consumers">
+    <End Role="t_Consumers" Type="Self.t_Consumers" Multiplicity="1" />
+    <End Role="t_Sites" Type="Self.t_Sites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Consumers">
+        <PropertyRef Name="ConsumerId" />
+      </Principal>
+      <Dependent Role="t_Sites">
+        <PropertyRef Name="ConsumerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Sites_t_DisplayGroups1">
+    <End Role="t_DisplayGroups" Type="Self.t_DisplayGroups" Multiplicity="0..1" />
+    <End Role="t_Sites" Type="Self.t_Sites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_DisplayGroups">
+        <PropertyRef Name="Group" />
+      </Principal>
+      <Dependent Role="t_Sites">
+        <PropertyRef Name="DisplayGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Sites_t_Logger_Configurations">
+    <End Role="t_Logger_Configurations" Type="Self.t_Logger_Configurations" Multiplicity="0..1" />
+    <End Role="t_Sites" Type="Self.t_Sites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Logger_Configurations">
+        <PropertyRef Name="LoggerId" />
+      </Principal>
+      <Dependent Role="t_Sites">
+        <PropertyRef Name="LoggerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Sites_t_Loggers">
+    <End Role="t_Loggers" Type="Self.t_Loggers" Multiplicity="0..1" />
+    <End Role="t_Sites" Type="Self.t_Sites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Loggers">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="t_Sites">
+        <PropertyRef Name="LoggerSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Sites_t_Meters">
+    <End Role="t_Meters" Type="Self.t_Meters" Multiplicity="0..1" />
+    <End Role="t_Sites" Type="Self.t_Sites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Meters">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="t_Sites">
+        <PropertyRef Name="MeterSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Sites_t_Transmitters">
+    <End Role="t_Transmitters" Type="Self.t_Transmitters" Multiplicity="0..1" />
+    <End Role="t_Sites" Type="Self.t_Sites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Transmitters">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="t_Sites">
+        <PropertyRef Name="TransmitterSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Transmitter_Files_t_Transmitters">
+    <End Role="t_Transmitters" Type="Self.t_Transmitters" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_Transmitter_Files" Type="Self.t_Transmitter_Files" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Transmitters">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="t_Transmitter_Files">
+        <PropertyRef Name="TransmitterSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Transmitter_Histories_t_Transmitters">
+    <End Role="t_Transmitters" Type="Self.t_Transmitters" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t_Transmitter_Histories" Type="Self.t_Transmitter_Histories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Transmitters">
+        <PropertyRef Name="Serial" />
+      </Principal>
+      <Dependent Role="t_Transmitter_Histories">
+        <PropertyRef Name="NewTransmitterSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Users_t_Consumers">
+    <End Role="t_Consumers" Type="Self.t_Consumers" Multiplicity="0..1" />
+    <End Role="t_Users" Type="Self.t_Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Consumers">
+        <PropertyRef Name="ConsumerId" />
+      </Principal>
+      <Dependent Role="t_Users">
+        <PropertyRef Name="ConsumerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Users_t_Roles1">
+    <End Role="t_Roles" Type="Self.t_Roles" Multiplicity="1" />
+    <End Role="t_Users" Type="Self.t_Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Roles">
+        <PropertyRef Name="Role" />
+      </Principal>
+      <Dependent Role="t_Users">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Users_t_Staffs">
+    <End Role="t_Staffs" Type="Self.t_Staffs" Multiplicity="0..1" />
+    <End Role="t_Users" Type="Self.t_Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Staffs">
+        <PropertyRef Name="StaffId" />
+      </Principal>
+      <Dependent Role="t_Users">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CustomSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="search" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DataInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DataXMLInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DataXMLInsert_Softrel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ValidXMLInput" Type="xml" Mode="In" />
+    <Parameter Name="tablename" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="p_ComplexData_Select_Faster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="p_ComplexData_Select_For_Consumer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ConsumerId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="p_ComplexData_Select_For_Site" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="p_ComplexData_Select_For_Staff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StaffId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="p_Create_Data_Table" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ChannelId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="p_Data_Logger_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ChannelId" Type="varchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Drop_Data_Table" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="channelId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="p_Index_Logger_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ChannelId" Type="varchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Press_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start" Type="datetime" Mode="In" />
+    <Parameter Name="End" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Press_Get_2015" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="start" Type="datetime" Mode="In" />
+    <Parameter Name="end" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Press_Getw" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start" Type="datetime" Mode="In" />
+    <Parameter Name="End" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="ProductsAccessXMLInsertDataComplex" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ValidXMLInput" Type="xml" Mode="In" />
+  </Function>
+  <EntityContainer Name="tawaco2ModelStoreContainer">
+    <EntitySet Name="t_Accreditation_Types" EntityType="Self.t_Accreditation_Types" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Accreditations" EntityType="Self.t_Accreditations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Alarm_Configurations" EntityType="Self.t_Alarm_Configurations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Alarms" EntityType="Self.t_Alarms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Channel_Configurations" EntityType="Self.t_Channel_Configurations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Consumers" EntityType="Self.t_Consumers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Data_Complexes" EntityType="Self.t_Data_Complexes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Data_Raw_Indexes" EntityType="Self.t_Data_Raw_Indexes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_DisplayGroups" EntityType="Self.t_DisplayGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Language" EntityType="Self.t_Language" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_LanguageTranslate" EntityType="Self.t_LanguageTranslate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Logger_Configurations" EntityType="Self.t_Logger_Configurations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Logger_Files" EntityType="Self.t_Logger_Files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Logger_Histories" EntityType="Self.t_Logger_Histories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Loggers" EntityType="Self.t_Loggers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Meter_Files" EntityType="Self.t_Meter_Files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Meter_Histories" EntityType="Self.t_Meter_Histories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Meters" EntityType="Self.t_Meters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_RoleFunction" EntityType="Self.t_RoleFunction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Roles" EntityType="Self.t_Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Site_Files" EntityType="Self.t_Site_Files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Sites" EntityType="Self.t_Sites" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Staffs" EntityType="Self.t_Staffs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_SysParam" EntityType="Self.t_SysParam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Transmitter_Files" EntityType="Self.t_Transmitter_Files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Transmitter_Histories" EntityType="Self.t_Transmitter_Histories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Transmitters" EntityType="Self.t_Transmitters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Units" EntityType="Self.t_Units" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Users" EntityType="Self.t_Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Site_Availabilities" EntityType="Self.t_Site_Availabilities" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [t_Site_Availabilities].[Availability] AS [Availability], 
+    [t_Site_Availabilities].[Description] AS [Description], 
+    [t_Site_Availabilities].[Language] AS [Language]
+    FROM [dbo].[t_Site_Availabilities] AS [t_Site_Availabilities]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_t_Accreditations_t_Accreditation_Types" Association="Self.FK_t_Accreditations_t_Accreditation_Types">
+      <End Role="t_Accreditation_Types" EntitySet="t_Accreditation_Types" />
+      <End Role="t_Accreditations" EntitySet="t_Accreditations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Accreditations_t_Meters" Association="Self.FK_t_Accreditations_t_Meters">
+      <End Role="t_Meters" EntitySet="t_Meters" />
+      <End Role="t_Accreditations" EntitySet="t_Accreditations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Accreditations_t_Transmitters" Association="Self.FK_t_Accreditations_t_Transmitters">
+      <End Role="t_Transmitters" EntitySet="t_Transmitters" />
+      <End Role="t_Accreditations" EntitySet="t_Accreditations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Channel_Configurations_t_Logger_Configurations" Association="Self.FK_t_Channel_Configurations_t_Logger_Configurations">
+      <End Role="t_Logger_Configurations" EntitySet="t_Logger_Configurations" />
+      <End Role="t_Channel_Configurations" EntitySet="t_Channel_Configurations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Channel_Configurations_t_Units" Association="Self.FK_t_Channel_Configurations_t_Units">
+      <End Role="t_Units" EntitySet="t_Units" />
+      <End Role="t_Channel_Configurations" EntitySet="t_Channel_Configurations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Data_Complexes_t_Logger_Configurations" Association="Self.FK_t_Data_Complexes_t_Logger_Configurations">
+      <End Role="t_Logger_Configurations" EntitySet="t_Logger_Configurations" />
+      <End Role="t_Data_Complexes" EntitySet="t_Data_Complexes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Data_Raw_Indexes_t_Sites" Association="Self.FK_t_Data_Raw_Indexes_t_Sites">
+      <End Role="t_Sites" EntitySet="t_Sites" />
+      <End Role="t_Data_Raw_Indexes" EntitySet="t_Data_Raw_Indexes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Logger_Files_t_Loggers" Association="Self.FK_t_Logger_Files_t_Loggers">
+      <End Role="t_Loggers" EntitySet="t_Loggers" />
+      <End Role="t_Logger_Files" EntitySet="t_Logger_Files" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Logger_Histories_t_Loggers2" Association="Self.FK_t_Logger_Histories_t_Loggers2">
+      <End Role="t_Loggers" EntitySet="t_Loggers" />
+      <End Role="t_Logger_Histories" EntitySet="t_Logger_Histories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Logger_Histories_t_Sites" Association="Self.FK_t_Logger_Histories_t_Sites">
+      <End Role="t_Sites" EntitySet="t_Sites" />
+      <End Role="t_Logger_Histories" EntitySet="t_Logger_Histories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Meter_Files_t_Meters" Association="Self.FK_t_Meter_Files_t_Meters">
+      <End Role="t_Meters" EntitySet="t_Meters" />
+      <End Role="t_Meter_Files" EntitySet="t_Meter_Files" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Meter_Histories_t_Meters2" Association="Self.FK_t_Meter_Histories_t_Meters2">
+      <End Role="t_Meters" EntitySet="t_Meters" />
+      <End Role="t_Meter_Histories" EntitySet="t_Meter_Histories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Site_Files_t_Sites" Association="Self.FK_t_Site_Files_t_Sites">
+      <End Role="t_Sites" EntitySet="t_Sites" />
+      <End Role="t_Site_Files" EntitySet="t_Site_Files" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Sites_t_Consumers" Association="Self.FK_t_Sites_t_Consumers">
+      <End Role="t_Consumers" EntitySet="t_Consumers" />
+      <End Role="t_Sites" EntitySet="t_Sites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Sites_t_DisplayGroups1" Association="Self.FK_t_Sites_t_DisplayGroups1">
+      <End Role="t_DisplayGroups" EntitySet="t_DisplayGroups" />
+      <End Role="t_Sites" EntitySet="t_Sites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Sites_t_Logger_Configurations" Association="Self.FK_t_Sites_t_Logger_Configurations">
+      <End Role="t_Logger_Configurations" EntitySet="t_Logger_Configurations" />
+      <End Role="t_Sites" EntitySet="t_Sites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Sites_t_Loggers" Association="Self.FK_t_Sites_t_Loggers">
+      <End Role="t_Loggers" EntitySet="t_Loggers" />
+      <End Role="t_Sites" EntitySet="t_Sites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Sites_t_Meters" Association="Self.FK_t_Sites_t_Meters">
+      <End Role="t_Meters" EntitySet="t_Meters" />
+      <End Role="t_Sites" EntitySet="t_Sites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Sites_t_Transmitters" Association="Self.FK_t_Sites_t_Transmitters">
+      <End Role="t_Transmitters" EntitySet="t_Transmitters" />
+      <End Role="t_Sites" EntitySet="t_Sites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Transmitter_Files_t_Transmitters" Association="Self.FK_t_Transmitter_Files_t_Transmitters">
+      <End Role="t_Transmitters" EntitySet="t_Transmitters" />
+      <End Role="t_Transmitter_Files" EntitySet="t_Transmitter_Files" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Transmitter_Histories_t_Transmitters" Association="Self.FK_t_Transmitter_Histories_t_Transmitters">
+      <End Role="t_Transmitters" EntitySet="t_Transmitters" />
+      <End Role="t_Transmitter_Histories" EntitySet="t_Transmitter_Histories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Users_t_Consumers" Association="Self.FK_t_Users_t_Consumers">
+      <End Role="t_Consumers" EntitySet="t_Consumers" />
+      <End Role="t_Users" EntitySet="t_Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Users_t_Roles1" Association="Self.FK_t_Users_t_Roles1">
+      <End Role="t_Roles" EntitySet="t_Roles" />
+      <End Role="t_Users" EntitySet="t_Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Users_t_Staffs" Association="Self.FK_t_Users_t_Staffs">
+      <End Role="t_Staffs" EntitySet="t_Staffs" />
+      <End Role="t_Users" EntitySet="t_Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,1046 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tmptawacoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DeviceTokenApp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DeviceToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Sound" Type="Boolean" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="t_Data_Manual">
+    <Key>
+      <PropertyRef Name="Stt" />
+    </Key>
+    <Property Name="Stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+    <Property Name="Index" Type="Double" />
+    <Property Name="Output" Type="Double" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Devices_ChannelsConfigs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LoggerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastTimeStamp" Type="DateTime" Precision="3" />
+    <Property Name="LastValue" Type="Double" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="BaseMin" Type="Double" />
+    <Property Name="BaseMax" Type="Double" />
+    <Property Name="BaseLine" Type="Double" />
+    <Property Name="GroupChannel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pressure1" Type="Boolean" />
+    <Property Name="Pressure2" Type="Boolean" />
+    <Property Name="ForwardFlow" Type="Boolean" />
+    <Property Name="ReverseFlow" Type="Boolean" />
+    <Property Name="DisplayOnGraph" Type="Boolean" />
+    <Property Name="StatusViewAlarm" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="t_Devices_Loggers">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReceiptDate" Type="DateTime" Precision="3" />
+    <Property Name="Provider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Marks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Installed" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="DateAccreditation" Type="DateTime" Precision="3" />
+    <Property Name="DateInstallBattery" Type="DateTime" Precision="3" />
+    <Property Name="YearBattery" Type="Int32" />
+  </EntityType>
+  <EntityType Name="t_Devices_Meter_Accreditation_Type">
+    <Key>
+      <PropertyRef Name="AccreditationType" />
+    </Key>
+    <Property Name="AccreditationType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Devices_Meters">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReceiptDate" Type="DateTime" Precision="3" />
+    <Property Name="AccreditedDate" Type="DateTime" Precision="3" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+    <Property Name="AccreditationDocument" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="AccreditationType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Provider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Marks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Size" Type="Int16" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Installed" Type="Boolean" />
+    <Property Name="InitialIndex" Type="Double" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ApprovalDate" Type="DateTime" Precision="3" />
+    <Property Name="Approved" Type="Boolean" />
+    <Property Name="ApprovalDecision" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SerialTransmitter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nationality" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Devices_SitesConfigs">
+    <Key>
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Pressure" Type="Byte" />
+    <Property Name="Forward" Type="Byte" />
+    <Property Name="Reverse" Type="Byte" />
+    <Property Name="Interval" Type="Int16" />
+    <Property Name="BeginTime" Type="DateTime" Precision="3" />
+    <Property Name="ZoomInit" Type="Byte" />
+    <Property Name="ZoomOn" Type="Byte" />
+    <Property Name="Pressure1" Type="Byte" />
+    <Property Name="DelayTime" Type="Int32" />
+  </EntityType>
+  <EntityType Name="t_Devices_Status">
+    <Key>
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="Status" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Devices_Transmitters">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReceiptDate" Type="DateTime" Precision="3" />
+    <Property Name="Provider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Marks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Size" Type="Int16" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Installed" Type="Boolean" />
+    <Property Name="InitialIndex" Type="Double" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ApprovalDate" Type="DateTime" Precision="3" />
+    <Property Name="Approved" Type="Boolean" />
+    <Property Name="ApprovalDecision" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccreditedDate" Type="DateTime" Precision="3" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+    <Property Name="AccreditationDocument" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="AccreditationType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="MeterSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="t_Devices_Units">
+    <Key>
+      <PropertyRef Name="Unit" />
+    </Key>
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Gis_Sites">
+    <Key>
+      <PropertyRef Name="Company" />
+    </Key>
+    <Property Name="Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Latitude" Type="Double" Nullable="false" />
+    <Property Name="Longitude" Type="Double" Nullable="false" />
+    <Property Name="Zoom" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Meter_Files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Serial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FileName" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MIMEType" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Size" Type="Int32" />
+    <Property Name="Path" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UploadDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="t_Site_Availabilities">
+    <Key>
+      <PropertyRef Name="Availability" />
+    </Key>
+    <Property Name="Availability" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Site_Companies">
+    <Key>
+      <PropertyRef Name="Company" />
+    </Key>
+    <Property Name="Company" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Production" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ward" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AmountDHTKH" Type="Int32" />
+    <Property Name="AmountValve" Type="Int32" />
+    <Property Name="AmountPool" Type="Int32" />
+    <Property Name="AmountTCH" Type="Int32" />
+    <Property Name="NRW" Type="Double" />
+  </EntityType>
+  <EntityType Name="t_Site_Covers">
+    <Key>
+      <PropertyRef Name="CoverID" />
+    </Key>
+    <Property Name="CoverID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CoverL" Type="Int32" />
+    <Property Name="CoverW" Type="Int32" />
+    <Property Name="CoverH" Type="Int32" />
+    <Property Name="CoverMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CoverNL" Type="Int32" />
+  </EntityType>
+  <EntityType Name="t_Site_Files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FileName" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MIMEType" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Size" Type="Int32" />
+    <Property Name="Path" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UploadDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="t_Site_Groups">
+    <Key>
+      <PropertyRef Name="Group" />
+    </Key>
+    <Property Name="Group" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Site_Levels">
+    <Key>
+      <PropertyRef Name="Level" />
+    </Key>
+    <Property Name="Level" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Site_MeterDirections">
+    <Key>
+      <PropertyRef Name="Direction" />
+    </Key>
+    <Property Name="Direction" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Site_Sites">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OldId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="Double" />
+    <Property Name="Latitude" Type="Double" />
+    <Property Name="ViewGroup" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="StaffId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Meter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Transmitter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Logger" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfMeterChange" Type="DateTime" Precision="3" />
+    <Property Name="DateOfLoggerChange" Type="DateTime" Precision="3" />
+    <Property Name="DateOfTransmitterChange" Type="DateTime" Precision="3" />
+    <Property Name="DateOfBatteryChange" Type="DateTime" Precision="3" />
+    <Property Name="DateOfTransmitterBatteryChange" Type="DateTime" Precision="3" />
+    <Property Name="DateOfLoggerBatteryChange" Type="DateTime" Precision="3" />
+    <Property Name="DescriptionOfChange" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ChangeIndex" Type="Double" />
+    <Property Name="Level" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Group" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Company" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TakeoverDate" Type="DateTime" Precision="3" />
+    <Property Name="Takeovered" Type="Boolean" />
+    <Property Name="Status" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Availability" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Display" Type="Boolean" />
+    <Property Name="Property" Type="Boolean" />
+    <Property Name="UsingLogger" Type="Boolean" />
+    <Property Name="MeterDirection" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ProductionCompany" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="IstDistributionCompany" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="QndDistributionCompany" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="IstDoNotCalculateReverse" Type="Boolean" />
+    <Property Name="QndDoNotCalculateReverse" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ChangeIndex1" Type="Double" />
+    <Property Name="Group2" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="CoverID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Group3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Group4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Group5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="District" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="DMAOut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Site_Status">
+    <Key>
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="Status" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Site_ViewGroups">
+    <Key>
+      <PropertyRef Name="Group" />
+    </Key>
+    <Property Name="Group" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_User_Roles">
+    <Key>
+      <PropertyRef Name="Role" />
+    </Key>
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_User_Staffs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_User_Users">
+    <Key>
+      <PropertyRef Name="Uid" />
+    </Key>
+    <Property Name="Uid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StaffId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+    <Property Name="Ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LogCount" Type="Int32" />
+    <Property Name="Zoom" Type="Byte" />
+    <Property Name="Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="t_History_Site_Loggers">
+    <Key>
+      <PropertyRef Name="DateChanged" />
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="DateChanged" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OldMeterSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NewMeterSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OldMeterIndex" Type="Double" />
+    <Property Name="NewMeterIndex" Type="Double" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_History_Site_Meters">
+    <Key>
+      <PropertyRef Name="DateChanged" />
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="DateChanged" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OldMeterSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NewMeterSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OldMeterIndex" Type="Double" />
+    <Property Name="NewMeterIndex" Type="Double" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_History_Site_Transmitters">
+    <Key>
+      <PropertyRef Name="DateChanged" />
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="DateChanged" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OldMeterSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NewMeterSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OldMeterIndex" Type="Double" />
+    <Property Name="NewMeterIndex" Type="Double" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_History_Sites">
+    <Key>
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="SiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Meter" Type="Boolean" />
+    <Property Name="SerialMeter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Transmitter" Type="Boolean" />
+    <Property Name="SerialTransmitter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Logger" Type="Boolean" />
+    <Property Name="SeriLogger" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Battery" Type="Boolean" />
+    <Property Name="TransmitterBattery" Type="Boolean" />
+    <Property Name="LoggerBattery" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Index" Type="Double" />
+  </EntityType>
+  <EntityType Name="t_Site_Group2s">
+    <Key>
+      <PropertyRef Name="Group" />
+      <PropertyRef Name="Description" />
+    </Key>
+    <Property Name="Group" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Site_Group3s">
+    <Key>
+      <PropertyRef Name="Group" />
+    </Key>
+    <Property Name="Group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Site_Group4s">
+    <Key>
+      <PropertyRef Name="Group" />
+    </Key>
+    <Property Name="Group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t_Site_Group5s">
+    <Key>
+      <PropertyRef Name="Group" />
+    </Key>
+    <Property Name="Group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="tmptawacoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DeviceTokenApps" EntityType="Self.DeviceTokenApp" />
+    <EntitySet Name="t_Data_Manual" EntityType="Self.t_Data_Manual" />
+    <EntitySet Name="t_Devices_ChannelsConfigs" EntityType="Self.t_Devices_ChannelsConfigs" />
+    <EntitySet Name="t_Devices_Loggers" EntityType="Self.t_Devices_Loggers" />
+    <EntitySet Name="t_Devices_Meter_Accreditation_Type" EntityType="Self.t_Devices_Meter_Accreditation_Type" />
+    <EntitySet Name="t_Devices_Meters" EntityType="Self.t_Devices_Meters" />
+    <EntitySet Name="t_Devices_SitesConfigs" EntityType="Self.t_Devices_SitesConfigs" />
+    <EntitySet Name="t_Devices_Status" EntityType="Self.t_Devices_Status" />
+    <EntitySet Name="t_Devices_Transmitters" EntityType="Self.t_Devices_Transmitters" />
+    <EntitySet Name="t_Devices_Units" EntityType="Self.t_Devices_Units" />
+    <EntitySet Name="t_Gis_Sites" EntityType="Self.t_Gis_Sites" />
+    <EntitySet Name="t_Meter_Files" EntityType="Self.t_Meter_Files" />
+    <EntitySet Name="t_Site_Availabilities" EntityType="Self.t_Site_Availabilities" />
+    <EntitySet Name="t_Site_Companies" EntityType="Self.t_Site_Companies" />
+    <EntitySet Name="t_Site_Covers" EntityType="Self.t_Site_Covers" />
+    <EntitySet Name="t_Site_Files" EntityType="Self.t_Site_Files" />
+    <EntitySet Name="t_Site_Groups" EntityType="Self.t_Site_Groups" />
+    <EntitySet Name="t_Site_Levels" EntityType="Self.t_Site_Levels" />
+    <EntitySet Name="t_Site_MeterDirections" EntityType="Self.t_Site_MeterDirections" />
+    <EntitySet Name="t_Site_Sites" EntityType="Self.t_Site_Sites" />
+    <EntitySet Name="t_Site_Status" EntityType="Self.t_Site_Status" />
+    <EntitySet Name="t_Site_ViewGroups" EntityType="Self.t_Site_ViewGroups" />
+    <EntitySet Name="t_User_Roles" EntityType="Self.t_User_Roles" />
+    <EntitySet Name="t_User_Staffs" EntityType="Self.t_User_Staffs" />
+    <EntitySet Name="t_User_Users" EntityType="Self.t_User_Users" />
+    <EntitySet Name="t_History_Site_Loggers" EntityType="Self.t_History_Site_Loggers" />
+    <EntitySet Name="t_History_Site_Meters" EntityType="Self.t_History_Site_Meters" />
+    <EntitySet Name="t_History_Site_Transmitters" EntityType="Self.t_History_Site_Transmitters" />
+    <EntitySet Name="t_History_Sites" EntityType="Self.t_History_Sites" />
+    <EntitySet Name="t_Site_Group2s" EntityType="Self.t_Site_Group2s" />
+    <EntitySet Name="t_Site_Group3s" EntityType="Self.t_Site_Group3s" />
+    <EntitySet Name="t_Site_Group4s" EntityType="Self.t_Site_Group4s" />
+    <EntitySet Name="t_Site_Group5s" EntityType="Self.t_Site_Group5s" />
+    <FunctionImport Name="Autoupdate_FillData">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="time" Mode="In" Type="DateTime" />
+      <Parameter Name="value" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="Autoupdate_LastRows">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="Max" Mode="InOut" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Autoupdate_Null">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="Day" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Autoupdate_UpdateNull">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="time" Mode="In" Type="DateTime" />
+      <Parameter Name="value" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="InsertDeviceToken">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Token" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NewDeleteCommand">
+      <Parameter Name="Original_Uid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NewInsertCommand" ReturnType="Collection(tmptawacoModel.NewInsertCommand_Result)">
+      <Parameter Name="Uid" Mode="In" Type="String" />
+      <Parameter Name="StaffId" Mode="In" Type="String" />
+      <Parameter Name="Pwd" Mode="In" Type="String" />
+      <Parameter Name="Salt" Mode="In" Type="String" />
+      <Parameter Name="Role" Mode="In" Type="String" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="TimeStamp" Mode="In" Type="DateTime" />
+      <Parameter Name="Ip" Mode="In" Type="String" />
+      <Parameter Name="LogCount" Mode="In" Type="Int32" />
+      <Parameter Name="Zoom" Mode="In" Type="Byte" />
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="Language" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NewSelectCommand" ReturnType="Collection(tmptawacoModel.NewSelectCommand_Result)" />
+    <FunctionImport Name="NewUpdateCommand" ReturnType="Collection(tmptawacoModel.NewUpdateCommand_Result)">
+      <Parameter Name="Uid" Mode="In" Type="String" />
+      <Parameter Name="StaffId" Mode="In" Type="String" />
+      <Parameter Name="Pwd" Mode="In" Type="String" />
+      <Parameter Name="Salt" Mode="In" Type="String" />
+      <Parameter Name="Role" Mode="In" Type="String" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="TimeStamp" Mode="In" Type="DateTime" />
+      <Parameter Name="Ip" Mode="In" Type="String" />
+      <Parameter Name="LogCount" Mode="In" Type="Int32" />
+      <Parameter Name="Zoom" Mode="In" Type="Byte" />
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="Language" Mode="In" Type="String" />
+      <Parameter Name="Original_Uid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Data_DMA" ReturnType="Collection(tmptawacoModel.p_Calculate_Daily_Data_DMA_Result)">
+      <Parameter Name="dmaid" Mode="In" Type="String" />
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+      <Parameter Name="end" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Output">
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Output_All">
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Output_All_Org">
+      <Parameter Name="startDate" Mode="In" Type="DateTime" />
+      <Parameter Name="endDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Output_By_Company">
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Output_By_Company_Org">
+      <Parameter Name="company" Mode="In" Type="String" />
+      <Parameter Name="startDate" Mode="In" Type="DateTime" />
+      <Parameter Name="endDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Output_By_Group">
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Output_By_Group_Org">
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Output_By_Group2">
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Output_By_Group3">
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Output_By_Group4">
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Output_By_Group5">
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Output_By_Level">
+      <Parameter Name="Level" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Output_By_Level_Org">
+      <Parameter Name="Level" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Output_Org">
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Report">
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Daily_Site" ReturnType="Collection(tmptawacoModel.p_Calculate_Daily_Site_Result)">
+      <Parameter Name="siteid" Mode="In" Type="String" />
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+      <Parameter Name="end" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Hourly_Data_DMA" ReturnType="Collection(tmptawacoModel.p_Calculate_Hourly_Data_DMA_Result)">
+      <Parameter Name="dmaid" Mode="In" Type="String" />
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+      <Parameter Name="end" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Hourly_Output_All">
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Hourly_Site" ReturnType="Collection(tmptawacoModel.p_Calculate_Hourly_Site_Result)">
+      <Parameter Name="siteid" Mode="In" Type="String" />
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+      <Parameter Name="end" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Logger_Daily_Output">
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Monthly_Data_DMA" ReturnType="Collection(tmptawacoModel.p_Calculate_Monthly_Data_DMA_Result)">
+      <Parameter Name="dmaid" Mode="In" Type="String" />
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+      <Parameter Name="end" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Monthly_Output_All">
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Monthly_Site" ReturnType="Collection(tmptawacoModel.p_Calculate_Monthly_Site_Result)">
+      <Parameter Name="siteid" Mode="In" Type="String" />
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+      <Parameter Name="end" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Company_Hourly_Out_Output">
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Company_Hourly_Output">
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Company_Monthly_Out_Output">
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Company_Monthly_Output">
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Company_Out_Output">
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Company_Output">
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Group_Daily_Output">
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="Start" Mode="In" Type="DateTime" />
+      <Parameter Name="End" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Group2_Daily_Output">
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="Start" Mode="In" Type="DateTime" />
+      <Parameter Name="End" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Group3_Daily_Output">
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="Start" Mode="In" Type="DateTime" />
+      <Parameter Name="End" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Group4_Daily_Output">
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="Start" Mode="In" Type="DateTime" />
+      <Parameter Name="End" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Group5_Daily_Output">
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="Start" Mode="In" Type="DateTime" />
+      <Parameter Name="End" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_MCompany_Output">
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Site_Daily_Output">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="Start" Mode="In" Type="DateTime" />
+      <Parameter Name="End" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Site_Hourly_Output">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="Start" Mode="In" Type="DateTime" />
+      <Parameter Name="End" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Site_Montly_Output">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="Start" Mode="In" Type="DateTime" />
+      <Parameter Name="End" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_One_Site_Yearly_Output">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="Start" Mode="In" Type="DateTime" />
+      <Parameter Name="End" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calculate_Yearly_Site" ReturnType="Collection(tmptawacoModel.p_Calculate_Yearly_Site_Result)">
+      <Parameter Name="siteid" Mode="In" Type="String" />
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+      <Parameter Name="end" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calcutale_Daily_Site_One_Time">
+      <Parameter Name="siteid" Mode="In" Type="String" />
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Calcutale_Hourly_Site_One_Time">
+      <Parameter Name="siteid" Mode="In" Type="String" />
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Data_Logger_CreateTable">
+      <Parameter Name="channelId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_Data_Logger_Get">
+      <Parameter Name="siteId" Mode="In" Type="String" />
+      <Parameter Name="startDate" Mode="In" Type="DateTime" />
+      <Parameter Name="endDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Data_Manual_Delete">
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="Success" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="p_Data_Manual_InsertOrUpdate">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="TimeStamp" Mode="In" Type="DateTime" />
+      <Parameter Name="Index" Mode="In" Type="Double" />
+      <Parameter Name="Output" Mode="In" Type="Double" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Success" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="p_Get_Data_Logger_Complex" ReturnType="Collection(tmptawacoModel.p_Get_Data_Logger_Complex_Result)">
+      <Parameter Name="siteid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_GetChannelByLoggerId" ReturnType="Collection(tmptawacoModel.p_GetChannelByLoggerId_Result)">
+      <Parameter Name="loggerid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_GetDataDeviceToken">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_History_Site_Delete" ReturnType="Collection(tmptawacoModel.p_History_Site_Delete_Result)">
+      <Parameter Name="siteId" Mode="In" Type="String" />
+      <Parameter Name="success" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="p_History_Site_InsertOrUpdate">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+      <Parameter Name="Meter" Mode="In" Type="Boolean" />
+      <Parameter Name="SerialMeter" Mode="In" Type="String" />
+      <Parameter Name="Transmitter" Mode="In" Type="Boolean" />
+      <Parameter Name="SerialTransmitter" Mode="In" Type="String" />
+      <Parameter Name="Logger" Mode="In" Type="Boolean" />
+      <Parameter Name="SerialLogger" Mode="In" Type="String" />
+      <Parameter Name="Battery" Mode="In" Type="Boolean" />
+      <Parameter Name="TransmitterBattery" Mode="In" Type="Boolean" />
+      <Parameter Name="LoggerBattery" Mode="In" Type="Boolean" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Index" Mode="In" Type="Double" />
+      <Parameter Name="Success" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="p_History_Site_Logger_Delete">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="DateChanged" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_History_Site_Logger_Insert">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="DateChanged" Mode="In" Type="DateTime" />
+      <Parameter Name="OldMeterSerial" Mode="In" Type="String" />
+      <Parameter Name="NewMeterSerial" Mode="In" Type="String" />
+      <Parameter Name="OldIndex" Mode="In" Type="Double" />
+      <Parameter Name="NewIndex" Mode="In" Type="Double" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_History_Site_Logger_Select_By_SiteId">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_History_Site_Logger_Update">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="DateChanged" Mode="In" Type="DateTime" />
+      <Parameter Name="OldMeterSerial" Mode="In" Type="String" />
+      <Parameter Name="NewMeterSerial" Mode="In" Type="String" />
+      <Parameter Name="OldIndex" Mode="In" Type="Double" />
+      <Parameter Name="NewIndex" Mode="In" Type="Double" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_History_Site_Meter_Delete">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="DateChanged" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_History_Site_Meter_Insert">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="DateChanged" Mode="In" Type="DateTime" />
+      <Parameter Name="OldMeterSerial" Mode="In" Type="String" />
+      <Parameter Name="NewMeterSerial" Mode="In" Type="String" />
+      <Parameter Name="OldIndex" Mode="In" Type="Double" />
+      <Parameter Name="NewIndex" Mode="In" Type="Double" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_History_Site_Meter_Select_By_SiteId">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_History_Site_Meter_Update">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="DateChanged" Mode="In" Type="DateTime" />
+      <Parameter Name="OldMeterSerial" Mode="In" Type="String" />
+      <Parameter Name="NewMeterSerial" Mode="In" Type="String" />
+      <Parameter Name="OldIndex" Mode="In" Type="Double" />
+      <Parameter Name="NewIndex" Mode="In" Type="Double" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_History_Site_Transmitter_Delete">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="DateChanged" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_History_Site_Transmitter_Insert">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="DateChanged" Mode="In" Type="DateTime" />
+      <Parameter Name="OldMeterSerial" Mode="In" Type="String" />
+      <Parameter Name="NewMeterSerial" Mode="In" Type="String" />
+      <Parameter Name="OldIndex" Mode="In" Type="Double" />
+      <Parameter Name="NewIndex" Mode="In" Type="Double" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_History_Site_Transmitter_Select_By_SiteId">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_History_Site_Transmitter_Update">
+      <Parameter Name="SiteId" Mode="In" Type="String" />
+      <Parameter Name="DateChanged" Mode="In" Type="DateTime" />
+      <Parameter Name="OldMeterSerial" Mode="In" Type="String" />
+      <Parameter Name="NewMeterSerial" Mode="In" Type="String" />
+      <Parameter Name="OldIndex" Mode="In" Type="Double" />
+      <Parameter Name="NewIndex" Mode="In" Type="Double" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_Map_GetChannels_ByLoggerId" ReturnType="Collection(tmptawacoModel.p_Map_GetChannels_ByLoggerId_Result)">
+      <Parameter Name="LoggerId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_Map_GetSites_ByCompany" ReturnType="Collection(tmptawacoModel.p_Map_GetSites_ByCompany_Result)">
+      <Parameter Name="Company" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_RemoveTokenLogoutApp">
+      <Parameter Name="Token" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="p_test">
+      <Parameter Name="Company" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="p_Total_DMA_Error" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="p_Total_Site_Action" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="p_Total_Site_Error" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="p_Total_Site_Has_Data" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="UpdateStatusPushNoti">
+      <Parameter Name="Token" Mode="In" Type="String" />
+      <Parameter Name="Status" Mode="In" Type="Boolean" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="NewInsertCommand_Result">
+    <Property Type="String" Name="Uid" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="StaffId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Pwd" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Salt" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Role" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Active" Nullable="true" />
+    <Property Type="DateTime" Name="TimeStamp" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Ip" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="LogCount" Nullable="true" />
+    <Property Type="Byte" Name="Zoom" Nullable="true" />
+    <Property Type="String" Name="Company" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Language" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="NewSelectCommand_Result">
+    <Property Type="String" Name="Uid" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="StaffId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Pwd" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Salt" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Role" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Active" Nullable="true" />
+    <Property Type="DateTime" Name="TimeStamp" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Ip" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="LogCount" Nullable="true" />
+    <Property Type="Byte" Name="Zoom" Nullable="true" />
+    <Property Type="String" Name="Company" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Language" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="NewUpdateCommand_Result">
+    <Property Type="String" Name="Uid" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="StaffId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Pwd" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Salt" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Role" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Active" Nullable="true" />
+    <Property Type="DateTime" Name="TimeStamp" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Ip" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="LogCount" Nullable="true" />
+    <Property Type="Byte" Name="Zoom" Nullable="true" />
+    <Property Type="String" Name="Company" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Language" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="p_Calculate_Daily_Data_DMA_Result">
+    <Property Type="DateTime" Name="TimeStamp" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="Value" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="p_Calculate_Daily_Site_Result">
+    <Property Type="DateTime" Name="TimeStamp" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="Value" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="p_Calculate_Hourly_Data_DMA_Result">
+    <Property Type="DateTime" Name="TimeStamp" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="Value" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="p_Calculate_Hourly_Site_Result">
+    <Property Type="DateTime" Name="TimeStamp" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="Value" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="p_Calculate_Monthly_Data_DMA_Result">
+    <Property Type="DateTime" Name="TimeStamp" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="Value" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="p_Calculate_Monthly_Site_Result">
+    <Property Type="DateTime" Name="TimeStamp" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="Value" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="p_Calculate_Yearly_Site_Result">
+    <Property Type="DateTime" Name="TimeStamp" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="Value" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="p_Get_Data_Logger_Complex_Result">
+    <Property Type="String" Name="Id" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="OldId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Location" Nullable="true" MaxLength="255" />
+    <Property Type="Double" Name="Longitude" Nullable="true" />
+    <Property Type="Double" Name="Latitude" Nullable="true" />
+    <Property Type="String" Name="ViewGroup" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="StaffId" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="Meter" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Transmitter" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Logger" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="DateOfMeterChange" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="DateOfLoggerChange" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="DateOfTransmitterChange" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="DateOfBatteryChange" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="DateOfTransmitterBatteryChange" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="DateOfLoggerBatteryChange" Nullable="true" Precision="23" />
+    <Property Type="String" Name="DescriptionOfChange" Nullable="true" MaxLength="255" />
+    <Property Type="Double" Name="ChangeIndex" Nullable="true" />
+    <Property Type="String" Name="Level" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="Group" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="Company" Nullable="true" MaxLength="5" />
+    <Property Type="DateTime" Name="TakeoverDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="Takeovered" Nullable="true" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="Availability" Nullable="true" MaxLength="5" />
+    <Property Type="Boolean" Name="Display" Nullable="true" />
+    <Property Type="Boolean" Name="Property" Nullable="true" />
+    <Property Type="Boolean" Name="UsingLogger" Nullable="true" />
+    <Property Type="String" Name="MeterDirection" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="ProductionCompany" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="IstDistributionCompany" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="QndDistributionCompany" Nullable="true" MaxLength="5" />
+    <Property Type="Boolean" Name="IstDoNotCalculateReverse" Nullable="true" />
+    <Property Type="Boolean" Name="QndDoNotCalculateReverse" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+    <Property Type="Double" Name="ChangeIndex1" Nullable="true" />
+    <Property Type="String" Name="Group2" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="CoverID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Group3" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Group4" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Group5" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="District" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="DMAOut" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Id1" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="SiteId" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Tel" Nullable="true" MaxLength="50" />
+    <Property Type="Byte" Name="Pressure" Nullable="true" />
+    <Property Type="Byte" Name="Forward" Nullable="true" />
+    <Property Type="Byte" Name="Reverse" Nullable="true" />
+    <Property Type="Int16" Name="Interval" Nullable="true" />
+    <Property Type="DateTime" Name="BeginTime" Nullable="true" Precision="23" />
+    <Property Type="Byte" Name="ZoomInit" Nullable="true" />
+    <Property Type="Byte" Name="ZoomOn" Nullable="true" />
+    <Property Type="Byte" Name="Pressure1" Nullable="true" />
+    <Property Type="Int32" Name="DelayTime" Nullable="true" />
+    <Property Type="String" Name="Id2" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LoggerId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Unit" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="LastTimeStamp" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="LastValue" Nullable="true" />
+    <Property Type="String" Name="Description1" Nullable="true" MaxLength="255" />
+    <Property Type="Double" Name="BaseMin" Nullable="true" />
+    <Property Type="Double" Name="BaseMax" Nullable="true" />
+    <Property Type="Double" Name="BaseLine" Nullable="true" />
+    <Property Type="String" Name="GroupChannel" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Pressure11" Nullable="true" />
+    <Property Type="Boolean" Name="Pressure2" Nullable="true" />
+    <Property Type="Boolean" Name="ForwardFlow" Nullable="true" />
+    <Property Type="Boolean" Name="ReverseFlow" Nullable="true" />
+    <Property Type="Boolean" Name="DisplayOnGraph" Nullable="true" />
+    <Property Type="Boolean" Name="StatusViewAlarm" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="p_GetChannelByLoggerId_Result">
+    <Property Type="String" Name="Id" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LoggerId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unit" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="GroupChannel" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="StatusViewAlarm" Nullable="true" />
+    <Property Type="Boolean" Name="Pressure1" Nullable="true" />
+    <Property Type="Boolean" Name="Pressure2" Nullable="true" />
+    <Property Type="Boolean" Name="ForwardFlow" Nullable="true" />
+    <Property Type="Boolean" Name="ReverseFlow" Nullable="true" />
+    <Property Type="DateTime" Name="TimeStamp" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="LastValue" Nullable="true" />
+    <Property Type="DateTime" Name="IndexTimeStamp" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="LastIndex" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="p_History_Site_Delete_Result">
+    <Property Type="String" Name="Level" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="p_Map_GetChannels_ByLoggerId_Result">
+    <Property Type="String" Name="Id" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LoggerId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Unit" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="LastTimeStamp" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="LastValue" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="p_Map_GetSites_ByCompany_Result">
+    <Property Type="Int64" Name="Nr" Nullable="true" />
+    <Property Type="String" Name="SiteId" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Location" Nullable="true" MaxLength="255" />
+    <Property Type="Double" Name="Longitude" Nullable="true" />
+    <Property Type="Double" Name="Latitude" Nullable="true" />
+    <Property Type="String" Name="LoggerId" Nullable="false" MaxLength="50" />
+  </ComplexType>
+</Schema>

@@ -17,7 +17,7 @@ namespace ConvertDatabase.Action
 
             Connect connect = new Connect(StatisNameDatabase.tmptawaco);
 
-            string sqlQuery = $"insert into t_Site_Sites (Id, Location, Longitude, Latitude, Company, Adrdress) values";
+            string sqlQuery = $"insert into t_Site_Sites (Id, Location, Longitude, Latitude, Company, Address) values";
 
             if(listNew.Count > 0)
             {
@@ -25,7 +25,7 @@ namespace ConvertDatabase.Action
                 {
                     sqlQuery += $"('{listNew[i].Id}', N'{listNew[i].Location}', '{listNew[i].Longitude}', '{listNew[i].Latitude}', N'{listNew[i].Company}', N'{listNew[i].Address}'),";
                 }
-                sqlQuery += $"('{listNew[listNew.Count - 1].Id}', N'{listNew[listNew.Count - 1].Location}', '{listNew[listNew.Count - 1].Longitude}', '{listNew[listNew.Count - 1].Latitude}', N'{listNew[listNew.Count - 1].Company}', N'{listNew[listNew.Count - 1 ].Address})";
+                sqlQuery += $"('{listNew[listNew.Count - 1].Id}', N'{listNew[listNew.Count - 1].Location}', '{listNew[listNew.Count - 1].Longitude}', '{listNew[listNew.Count - 1].Latitude}', N'{listNew[listNew.Count - 1].Company}', N'{listNew[listNew.Count - 1 ].Address}')";
             }
 
             try

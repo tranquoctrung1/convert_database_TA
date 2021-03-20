@@ -71,12 +71,25 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action\ConvertChannelAction.cs" />
+    <Compile Include="Action\ConvertLoggerAction.cs" />
     <Compile Include="Action\ConvertSiteAction.cs" />
+    <Compile Include="Action\ConvertTableLoggerAction.cs" />
+    <Compile Include="Action\CreateDataLoggerTableAction.cs" />
+    <Compile Include="Action\GetChannelOldDBAction.cs" />
+    <Compile Include="Action\GetDataLoggerTableOlDBAction.cs" />
+    <Compile Include="Action\GetLoggerOldDBAction.cs" />
     <Compile Include="Action\GetSiteOldDBACtion.cs" />
+    <Compile Include="Action\InsertChannelNewDBAction.cs" />
+    <Compile Include="Action\InsertDataLoggerTableNewDBAction.cs" />
+    <Compile Include="Action\InsertLoggerNewDBAction.cs" />
+    <Compile Include="Action\InsertSiteConfigNewDBAction.cs" />
     <Compile Include="Action\InsertSiteNewDBAction.cs" />
+    <Compile Include="ConnectDB\Connect.cs" />
     <Compile Include="DeviceTokenApp.cs">
       <DependentUpon>NewModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataLoggerModel.cs" />
     <Compile Include="NewInsertCommand_Result.cs">
       <DependentUpon>NewModel.tt</DependentUpon>
     </Compile>
@@ -376,8 +389,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

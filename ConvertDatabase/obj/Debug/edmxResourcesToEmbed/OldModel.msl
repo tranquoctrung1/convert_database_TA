@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tawaco2ModelStoreContainer" CdmEntityContainer="tawaco2Entities">
+    <EntitySetMapping Name="t_Accreditation_Types">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Accreditation_Types">
+        <MappingFragment StoreEntitySet="t_Accreditation_Types">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Accreditations">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Accreditations">
+        <MappingFragment StoreEntitySet="t_Accreditations">
+          <ScalarProperty Name="AccreditationDocument" ColumnName="AccreditationDocument" />
+          <ScalarProperty Name="MeterSerial" ColumnName="MeterSerial" />
+          <ScalarProperty Name="TransmitterSerial" ColumnName="TransmitterSerial" />
+          <ScalarProperty Name="AccreditationType" ColumnName="AccreditationType" />
+          <ScalarProperty Name="AccreditationDate" ColumnName="AccreditationDate" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Alarm_Configurations">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Alarm_Configurations">
+        <MappingFragment StoreEntitySet="t_Alarm_Configurations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+          <ScalarProperty Name="PhoneNr" ColumnName="PhoneNr" />
+          <ScalarProperty Name="Ena1" ColumnName="Ena1" />
+          <ScalarProperty Name="Ena2" ColumnName="Ena2" />
+          <ScalarProperty Name="Ena3" ColumnName="Ena3" />
+          <ScalarProperty Name="Ena4" ColumnName="Ena4" />
+          <ScalarProperty Name="Ena" ColumnName="Ena" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Alarms">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Alarms">
+        <MappingFragment StoreEntitySet="t_Alarms">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+          <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="ChannelName" ColumnName="ChannelName" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="Msg1" ColumnName="Msg1" />
+          <ScalarProperty Name="Msg2" ColumnName="Msg2" />
+          <ScalarProperty Name="Msg3" ColumnName="Msg3" />
+          <ScalarProperty Name="Msg4" ColumnName="Msg4" />
+          <ScalarProperty Name="Trigger" ColumnName="Trigger" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Channel_Configurations">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Channel_Configurations">
+        <MappingFragment StoreEntitySet="t_Channel_Configurations">
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="LoggerId" ColumnName="LoggerId" />
+          <ScalarProperty Name="ChannelName" ColumnName="ChannelName" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Pressure1" ColumnName="Pressure1" />
+          <ScalarProperty Name="Pressure2" ColumnName="Pressure2" />
+          <ScalarProperty Name="ForwardFlow" ColumnName="ForwardFlow" />
+          <ScalarProperty Name="ReverseFlow" ColumnName="ReverseFlow" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="LastValue" ColumnName="LastValue" />
+          <ScalarProperty Name="IndexTimeStamp" ColumnName="IndexTimeStamp" />
+          <ScalarProperty Name="LastIndex" ColumnName="LastIndex" />
+          <ScalarProperty Name="DisplayOnLabel" ColumnName="DisplayOnLabel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Consumers">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Consumers">
+        <MappingFragment StoreEntitySet="t_Consumers">
+          <ScalarProperty Name="ConsumerId" ColumnName="ConsumerId" />
+          <ScalarProperty Name="Zoom" ColumnName="Zoom" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Data_Complexes">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Data_Complexes">
+        <MappingFragment StoreEntitySet="t_Data_Complexes">
+          <ScalarProperty Name="LoggerId" ColumnName="LoggerId" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="ForwardFlow" ColumnName="ForwardFlow" />
+          <ScalarProperty Name="ReverseFlow" ColumnName="ReverseFlow" />
+          <ScalarProperty Name="ForwardIndex" ColumnName="ForwardIndex" />
+          <ScalarProperty Name="ReverseIndex" ColumnName="ReverseIndex" />
+          <ScalarProperty Name="Pressure1" ColumnName="Pressure1" />
+          <ScalarProperty Name="Pressure2" ColumnName="Pressure2" />
+          <ScalarProperty Name="MinForwardFlow" ColumnName="MinForwardFlow" />
+          <ScalarProperty Name="MaxForwardFlow" ColumnName="MaxForwardFlow" />
+          <ScalarProperty Name="MinReverseFlow" ColumnName="MinReverseFlow" />
+          <ScalarProperty Name="MaxReverseFlow" ColumnName="MaxReverseFlow" />
+          <ScalarProperty Name="MinPressure1" ColumnName="MinPressure1" />
+          <ScalarProperty Name="MaxPressure1" ColumnName="MaxPressure1" />
+          <ScalarProperty Name="MinPressure2" ColumnName="MinPressure2" />
+          <ScalarProperty Name="MaxPressure2" ColumnName="MaxPressure2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Data_Raw_Indexes">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Data_Raw_Indexes">
+        <MappingFragment StoreEntitySet="t_Data_Raw_Indexes">
+          <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_DisplayGroups">
+      <EntityTypeMapping TypeName="tawaco2Model.t_DisplayGroups">
+        <MappingFragment StoreEntitySet="t_DisplayGroups">
+          <ScalarProperty Name="Group" ColumnName="Group" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Language">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Language">
+        <MappingFragment StoreEntitySet="t_Language">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Noted" ColumnName="Noted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_LanguageTranslate">
+      <EntityTypeMapping TypeName="tawaco2Model.t_LanguageTranslate">
+        <MappingFragment StoreEntitySet="t_LanguageTranslate">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ControlId" ColumnName="ControlId" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Noted" ColumnName="Noted" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Logger_Configurations">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Logger_Configurations">
+        <MappingFragment StoreEntitySet="t_Logger_Configurations">
+          <ScalarProperty Name="LoggerId" ColumnName="LoggerId" />
+          <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+          <ScalarProperty Name="StartHour" ColumnName="StartHour" />
+          <ScalarProperty Name="TelephoneNumber" ColumnName="TelephoneNumber" />
+          <ScalarProperty Name="Pressure1" ColumnName="Pressure1" />
+          <ScalarProperty Name="Pressure2" ColumnName="Pressure2" />
+          <ScalarProperty Name="ForwardFlow" ColumnName="ForwardFlow" />
+          <ScalarProperty Name="ReverseFlow" ColumnName="ReverseFlow" />
+          <ScalarProperty Name="Alarm" ColumnName="Alarm" />
+          <ScalarProperty Name="TimeDelayAlarm" ColumnName="TimeDelayAlarm" />
+          <ScalarProperty Name="Interval" ColumnName="Interval" />
+          <ScalarProperty Name="Status1" ColumnName="Status1" />
+          <ScalarProperty Name="Status2" ColumnName="Status2" />
+          <ScalarProperty Name="TimeOffset" ColumnName="TimeOffset" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Logger_Files">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Logger_Files">
+        <MappingFragment StoreEntitySet="t_Logger_Files">
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="LoggerSerial" ColumnName="LoggerSerial" />
+          <ScalarProperty Name="MIMEType" ColumnName="MIMEType" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Logger_Histories">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Logger_Histories">
+        <MappingFragment StoreEntitySet="t_Logger_Histories">
+          <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+          <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+          <ScalarProperty Name="DateChanged" ColumnName="DateChanged" />
+          <ScalarProperty Name="OldLoggerSerial" ColumnName="OldLoggerSerial" />
+          <ScalarProperty Name="NewLoggerSerial" ColumnName="NewLoggerSerial" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Loggers">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Loggers">
+        <MappingFragment StoreEntitySet="t_Loggers">
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+          <ScalarProperty Name="Marks" ColumnName="Marks" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Installed" ColumnName="Installed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Meter_Files">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Meter_Files">
+        <MappingFragment StoreEntitySet="t_Meter_Files">
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="MeterSerial" ColumnName="MeterSerial" />
+          <ScalarProperty Name="MIMEType" ColumnName="MIMEType" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Meter_Histories">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Meter_Histories">
+        <MappingFragment StoreEntitySet="t_Meter_Histories">
+          <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+          <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+          <ScalarProperty Name="DateChanged" ColumnName="DateChanged" />
+          <ScalarProperty Name="OldMeterSerial" ColumnName="OldMeterSerial" />
+          <ScalarProperty Name="OldAccreditation" ColumnName="OldAccreditation" />
+          <ScalarProperty Name="OldIndex" ColumnName="OldIndex" />
+          <ScalarProperty Name="NewMeterSerial" ColumnName="NewMeterSerial" />
+          <ScalarProperty Name="NewAccreditation" ColumnName="NewAccreditation" />
+          <ScalarProperty Name="NewIndex" ColumnName="NewIndex" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Meters">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Meters">
+        <MappingFragment StoreEntitySet="t_Meters">
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+          <ScalarProperty Name="Marks" ColumnName="Marks" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Installed" ColumnName="Installed" />
+          <ScalarProperty Name="AccreditationDocument" ColumnName="AccreditationDocument" />
+          <ScalarProperty Name="ApprovalDecision" ColumnName="ApprovalDecision" />
+          <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+          <ScalarProperty Name="Approved" ColumnName="Approved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_RoleFunction">
+      <EntityTypeMapping TypeName="tawaco2Model.t_RoleFunction">
+        <MappingFragment StoreEntitySet="t_RoleFunction">
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="FunctionId" ColumnName="FunctionId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Roles">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Roles">
+        <MappingFragment StoreEntitySet="t_Roles">
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Site_Files">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Site_Files">
+        <MappingFragment StoreEntitySet="t_Site_Files">
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+          <ScalarProperty Name="MIMEType" ColumnName="MIMEType" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Sites">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Sites">
+        <MappingFragment StoreEntitySet="t_Sites">
+          <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+          <ScalarProperty Name="SiteAliasName" ColumnName="SiteAliasName" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="DisplayGroup" ColumnName="DisplayGroup" />
+          <ScalarProperty Name="Zoom" ColumnName="Zoom" />
+          <ScalarProperty Name="ConsumerId" ColumnName="ConsumerId" />
+          <ScalarProperty Name="LoggerId" ColumnName="LoggerId" />
+          <ScalarProperty Name="StartDay" ColumnName="StartDay" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MeterSerial" ColumnName="MeterSerial" />
+          <ScalarProperty Name="TransmitterSerial" ColumnName="TransmitterSerial" />
+          <ScalarProperty Name="LoggerSerial" ColumnName="LoggerSerial" />
+          <ScalarProperty Name="MeterDateChanged" ColumnName="MeterDateChanged" />
+          <ScalarProperty Name="TransmitterDateChanged" ColumnName="TransmitterDateChanged" />
+          <ScalarProperty Name="LoggerDateChanged" ColumnName="LoggerDateChanged" />
+          <ScalarProperty Name="Availability" ColumnName="Availability" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Staffs" ColumnName="Staffs" />
+          <ScalarProperty Name="LabelAnchorX" ColumnName="LabelAnchorX" />
+          <ScalarProperty Name="LabelAnchorY" ColumnName="LabelAnchorY" />
+          <ScalarProperty Name="LabelLat" ColumnName="LabelLat" />
+          <ScalarProperty Name="LabelLng" ColumnName="LabelLng" />
+          <ScalarProperty Name="PipeSize" ColumnName="PipeSize" />
+          <ScalarProperty Name="SetDelayTime" ColumnName="SetDelayTime" />
+          <ScalarProperty Name="SetDiffValue" ColumnName="SetDiffValue" />
+          <ScalarProperty Name="Baseline" ColumnName="Baseline" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Staffs">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Staffs">
+        <MappingFragment StoreEntitySet="t_Staffs">
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="TelephoneNumber" ColumnName="TelephoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_SysParam">
+      <EntityTypeMapping TypeName="tawaco2Model.t_SysParam">
+        <MappingFragment StoreEntitySet="t_SysParam">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Val" ColumnName="Val" />
+          <ScalarProperty Name="Val2" ColumnName="Val2" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+          <ScalarProperty Name="Activated" ColumnName="Activated" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Transmitter_Files">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Transmitter_Files">
+        <MappingFragment StoreEntitySet="t_Transmitter_Files">
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="TransmitterSerial" ColumnName="TransmitterSerial" />
+          <ScalarProperty Name="MIMEType" ColumnName="MIMEType" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Transmitter_Histories">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Transmitter_Histories">
+        <MappingFragment StoreEntitySet="t_Transmitter_Histories">
+          <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+          <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+          <ScalarProperty Name="DateChanged" ColumnName="DateChanged" />
+          <ScalarProperty Name="OldTransmitterSerial" ColumnName="OldTransmitterSerial" />
+          <ScalarProperty Name="OldAccreditation" ColumnName="OldAccreditation" />
+          <ScalarProperty Name="NewTransmitterSerial" ColumnName="NewTransmitterSerial" />
+          <ScalarProperty Name="NewAccreditation" ColumnName="NewAccreditation" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Transmitters">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Transmitters">
+        <MappingFragment StoreEntitySet="t_Transmitters">
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+          <ScalarProperty Name="Marks" ColumnName="Marks" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Installed" ColumnName="Installed" />
+          <ScalarProperty Name="AccreditationDocument" ColumnName="AccreditationDocument" />
+          <ScalarProperty Name="ApprovalDecision" ColumnName="ApprovalDecision" />
+          <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+          <ScalarProperty Name="Approved" ColumnName="Approved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Units">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Units">
+        <MappingFragment StoreEntitySet="t_Units">
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Users">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Users">
+        <MappingFragment StoreEntitySet="t_Users">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+          <ScalarProperty Name="ConsumerId" ColumnName="ConsumerId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+          <ScalarProperty Name="SetDelayTime" ColumnName="SetDelayTime" />
+          <ScalarProperty Name="SetDiffValue" ColumnName="SetDiffValue" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Site_Availabilities">
+      <EntityTypeMapping TypeName="tawaco2Model.t_Site_Availabilities">
+        <MappingFragment StoreEntitySet="t_Site_Availabilities">
+          <ScalarProperty Name="Availability" ColumnName="Availability" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CustomSearch" FunctionName="tawaco2Model.Store.CustomSearch" />
+    <FunctionImportMapping FunctionImportName="DataInsert" FunctionName="tawaco2Model.Store.DataInsert" />
+    <FunctionImportMapping FunctionImportName="DataXMLInsert" FunctionName="tawaco2Model.Store.DataXMLInsert" />
+    <FunctionImportMapping FunctionImportName="DataXMLInsert_Softrel" FunctionName="tawaco2Model.Store.DataXMLInsert_Softrel" />
+    <FunctionImportMapping FunctionImportName="p_ComplexData_Select_Faster" FunctionName="tawaco2Model.Store.p_ComplexData_Select_Faster" />
+    <FunctionImportMapping FunctionImportName="p_ComplexData_Select_For_Consumer" FunctionName="tawaco2Model.Store.p_ComplexData_Select_For_Consumer" />
+    <FunctionImportMapping FunctionImportName="p_ComplexData_Select_For_Site" FunctionName="tawaco2Model.Store.p_ComplexData_Select_For_Site" />
+    <FunctionImportMapping FunctionImportName="p_ComplexData_Select_For_Staff" FunctionName="tawaco2Model.Store.p_ComplexData_Select_For_Staff" />
+    <FunctionImportMapping FunctionImportName="p_Create_Data_Table" FunctionName="tawaco2Model.Store.p_Create_Data_Table" />
+    <FunctionImportMapping FunctionImportName="p_Data_Logger_Get" FunctionName="tawaco2Model.Store.p_Data_Logger_Get" />
+    <FunctionImportMapping FunctionImportName="p_Drop_Data_Table" FunctionName="tawaco2Model.Store.p_Drop_Data_Table" />
+    <FunctionImportMapping FunctionImportName="p_Index_Logger_Get" FunctionName="tawaco2Model.Store.p_Index_Logger_Get" />
+    <FunctionImportMapping FunctionImportName="p_Press_Get" FunctionName="tawaco2Model.Store.p_Press_Get" />
+    <FunctionImportMapping FunctionImportName="p_Press_Get_2015" FunctionName="tawaco2Model.Store.p_Press_Get_2015" />
+    <FunctionImportMapping FunctionImportName="p_Press_Getw" FunctionName="tawaco2Model.Store.p_Press_Getw" />
+    <FunctionImportMapping FunctionImportName="ProductsAccessXMLInsertDataComplex" FunctionName="tawaco2Model.Store.ProductsAccessXMLInsertDataComplex" />
+  </EntityContainerMapping>
+</Mapping>

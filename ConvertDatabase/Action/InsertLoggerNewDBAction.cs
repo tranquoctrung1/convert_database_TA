@@ -18,13 +18,16 @@ namespace ConvertDatabase.Action
 
             Connect connect = new Connect(StatisNameDatabase.tmptawaco);
 
-            string sqlQuery = $"insert into t_Devices_Loggers (Seial) values";
+            string sqlQuery = $"insert into t_Devices_Loggers (Serial) values";
 
             if (list.Count > 0)
             {
                 for (int i = 0; i < list.Count - 1; i++)
                 {
-                    sqlQuery += $"('{list[i].Serial}'),";
+                    if(list[i].Serial != "")
+                    {
+                        sqlQuery += $"('{list[i].Serial}'),";
+                    }
                 }
                 sqlQuery += $"('{list[list.Count - 1].Serial}')";
             }

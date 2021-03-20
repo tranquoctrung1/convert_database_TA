@@ -1,0 +1,1055 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tmptawacoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DeviceTokenApp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Username" Type="nvarchar" MaxLength="250" />
+    <Property Name="DeviceToken" Type="ntext" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Sound" Type="bit" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Data_Manual">
+    <Key>
+      <PropertyRef Name="Stt" />
+    </Key>
+    <Property Name="Stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SiteId" Type="varchar" MaxLength="50" />
+    <Property Name="TimeStamp" Type="datetime" />
+    <Property Name="Index" Type="float" />
+    <Property Name="Output" Type="float" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_Data_Raw' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_Data_Raw">
+          <Property Name="SiteId" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeStamp" Type="date" />
+          <Property Name="Value" Type="float" />
+          <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+        </EntityType>-->
+  <EntityType Name="t_Devices_ChannelsConfigs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoggerId" Type="varchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastTimeStamp" Type="datetime" />
+    <Property Name="LastValue" Type="float" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="BaseMin" Type="float" />
+    <Property Name="BaseMax" Type="float" />
+    <Property Name="BaseLine" Type="float" />
+    <Property Name="GroupChannel" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pressure1" Type="bit" />
+    <Property Name="Pressure2" Type="bit" />
+    <Property Name="ForwardFlow" Type="bit" />
+    <Property Name="ReverseFlow" Type="bit" />
+    <Property Name="DisplayOnGraph" Type="bit" />
+    <Property Name="StatusViewAlarm" Type="bit" />
+  </EntityType>
+  <EntityType Name="t_Devices_Loggers">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ReceiptDate" Type="datetime" />
+    <Property Name="Provider" Type="nvarchar" MaxLength="50" />
+    <Property Name="Marks" Type="nvarchar" MaxLength="50" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="Installed" Type="bit" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+    <Property Name="DateAccreditation" Type="datetime" />
+    <Property Name="DateInstallBattery" Type="datetime" />
+    <Property Name="YearBattery" Type="int" />
+  </EntityType>
+  <EntityType Name="t_Devices_Meter_Accreditation_Type">
+    <Key>
+      <PropertyRef Name="AccreditationType" />
+    </Key>
+    <Property Name="AccreditationType" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="t_Devices_Meters">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReceiptDate" Type="datetime" />
+    <Property Name="AccreditedDate" Type="datetime" />
+    <Property Name="ExpiryDate" Type="datetime" />
+    <Property Name="AccreditationDocument" Type="nvarchar" MaxLength="255" />
+    <Property Name="AccreditationType" Type="varchar" MaxLength="5" />
+    <Property Name="Provider" Type="nvarchar" MaxLength="50" />
+    <Property Name="Marks" Type="nvarchar" MaxLength="50" />
+    <Property Name="Size" Type="smallint" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="5" />
+    <Property Name="Installed" Type="bit" />
+    <Property Name="InitialIndex" Type="float" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="ApprovalDate" Type="datetime" />
+    <Property Name="Approved" Type="bit" />
+    <Property Name="ApprovalDecision" Type="nvarchar" MaxLength="50" />
+    <Property Name="SerialTransmitter" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nationality" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="t_Devices_SitesConfigs">
+    <Key>
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SiteId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Tel" Type="varchar" MaxLength="50" />
+    <Property Name="Pressure" Type="tinyint" />
+    <Property Name="Forward" Type="tinyint" />
+    <Property Name="Reverse" Type="tinyint" />
+    <Property Name="Interval" Type="smallint" />
+    <Property Name="BeginTime" Type="datetime" />
+    <Property Name="ZoomInit" Type="tinyint" />
+    <Property Name="ZoomOn" Type="tinyint" />
+    <Property Name="Pressure1" Type="tinyint" />
+    <Property Name="DelayTime" Type="int" />
+  </EntityType>
+  <EntityType Name="t_Devices_Status">
+    <Key>
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="Status" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="t_Devices_Transmitters">
+    <Key>
+      <PropertyRef Name="Serial" />
+    </Key>
+    <Property Name="Serial" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReceiptDate" Type="datetime" />
+    <Property Name="Provider" Type="nvarchar" MaxLength="50" />
+    <Property Name="Marks" Type="nvarchar" MaxLength="50" />
+    <Property Name="Size" Type="smallint" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="5" />
+    <Property Name="Installed" Type="bit" />
+    <Property Name="InitialIndex" Type="float" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="ApprovalDate" Type="datetime" />
+    <Property Name="Approved" Type="bit" />
+    <Property Name="ApprovalDecision" Type="nvarchar" MaxLength="50" />
+    <Property Name="AccreditedDate" Type="datetime" />
+    <Property Name="ExpiryDate" Type="datetime" />
+    <Property Name="AccreditationDocument" Type="nvarchar" MaxLength="255" />
+    <Property Name="AccreditationType" Type="varchar" MaxLength="5" />
+    <Property Name="MeterSerial" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="t_Devices_Units">
+    <Key>
+      <PropertyRef Name="Unit" />
+    </Key>
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_District' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_District">
+          <Property Name="IdDistrict" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_DMA_DMA' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_DMA_DMA">
+          <Property Name="IdStaff" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdDMA" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="t_Gis_Sites">
+    <Key>
+      <PropertyRef Name="Company" />
+    </Key>
+    <Property Name="Company" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Latitude" Type="float" Nullable="false" />
+    <Property Name="Longitude" Type="float" Nullable="false" />
+    <Property Name="Zoom" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_GroupChannel' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_GroupChannel">
+          <Property Name="GroupChannel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="400" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_History_Alarm' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_History_Alarm">
+          <Property Name="ChannelId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartDateAlarm" Type="datetime" />
+          <Property Name="EndDateAlarm" Type="datetime" />
+          <Property Name="TypeAlarm" Type="int" />
+          <Property Name="Level" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsFinish" Type="bit" />
+          <Property Name="Content" Type="nvarchar" MaxLength="4000" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_History_Alarm_Logger' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_History_Alarm_Logger">
+          <Property Name="Serial" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="IsFinish" Type="bit" />
+          <Property Name="Content" Type="nvarchar" MaxLength="4000" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tmptawaco.dbo.t_History_Site_Loggers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="t_History_Site_Loggers">
+    <Key>
+      <PropertyRef Name="DateChanged" />
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="DateChanged" Type="datetime" Nullable="false" />
+    <Property Name="SiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OldMeterSerial" Type="nvarchar" MaxLength="50" />
+    <Property Name="NewMeterSerial" Type="nvarchar" MaxLength="50" />
+    <Property Name="OldMeterIndex" Type="float" />
+    <Property Name="NewMeterIndex" Type="float" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tmptawaco.dbo.t_History_Site_Meters' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="t_History_Site_Meters">
+    <Key>
+      <PropertyRef Name="DateChanged" />
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="DateChanged" Type="datetime" Nullable="false" />
+    <Property Name="SiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OldMeterSerial" Type="nvarchar" MaxLength="50" />
+    <Property Name="NewMeterSerial" Type="nvarchar" MaxLength="50" />
+    <Property Name="OldMeterIndex" Type="float" />
+    <Property Name="NewMeterIndex" Type="float" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tmptawaco.dbo.t_History_Site_Transmitters' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="t_History_Site_Transmitters">
+    <Key>
+      <PropertyRef Name="DateChanged" />
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="DateChanged" Type="datetime" Nullable="false" />
+    <Property Name="SiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OldMeterSerial" Type="nvarchar" MaxLength="50" />
+    <Property Name="NewMeterSerial" Type="nvarchar" MaxLength="50" />
+    <Property Name="OldMeterIndex" Type="float" />
+    <Property Name="NewMeterIndex" Type="float" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tmptawaco.dbo.t_History_Sites' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="t_History_Sites">
+    <Key>
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="SiteId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Meter" Type="bit" />
+    <Property Name="SerialMeter" Type="varchar" MaxLength="50" />
+    <Property Name="Transmitter" Type="bit" />
+    <Property Name="SerialTransmitter" Type="varchar" MaxLength="50" />
+    <Property Name="Logger" Type="bit" />
+    <Property Name="SeriLogger" Type="varchar" MaxLength="50" />
+    <Property Name="Battery" Type="bit" />
+    <Property Name="TransmitterBattery" Type="bit" />
+    <Property Name="LoggerBattery" Type="bit" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Index" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_Histoty_Alarm_DMA' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_Histoty_Alarm_DMA">
+          <Property Name="DMAId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Content" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Level" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsFinish" Type="bit" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_LevelAlarm' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_LevelAlarm">
+          <Property Name="Level" Type="nvarchar" MaxLength="50" />
+          <Property Name="Value" Type="float" />
+        </EntityType>-->
+  <EntityType Name="t_Meter_Files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Serial" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="MIMEType" Type="varchar" MaxLength="4000" />
+    <Property Name="Size" Type="int" />
+    <Property Name="Path" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="UploadDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="t_Site_Availabilities">
+    <Key>
+      <PropertyRef Name="Availability" />
+    </Key>
+    <Property Name="Availability" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="t_Site_Companies">
+    <Key>
+      <PropertyRef Name="Company" />
+    </Key>
+    <Property Name="Company" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Production" Type="bit" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="District" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ward" Type="nvarchar" MaxLength="50" />
+    <Property Name="AmountDHTKH" Type="int" />
+    <Property Name="AmountValve" Type="int" />
+    <Property Name="AmountPool" Type="int" />
+    <Property Name="AmountTCH" Type="int" />
+    <Property Name="NRW" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_Site_Consumer' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_Site_Consumer">
+          <Property Name="ConsumerId" Type="nvarchar" MaxLength="50" />
+          <Property Name="SiteId" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="t_Site_Covers">
+    <Key>
+      <PropertyRef Name="CoverID" />
+    </Key>
+    <Property Name="CoverID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CoverL" Type="int" />
+    <Property Name="CoverW" Type="int" />
+    <Property Name="CoverH" Type="int" />
+    <Property Name="CoverMaterial" Type="nvarchar" MaxLength="50" />
+    <Property Name="CoverNL" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_Site_District' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_Site_District">
+          <Property Name="IdDistrict" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdSite" Type="nvarchar" MaxLength="4000" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_Site_DMA' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_Site_DMA">
+          <Property Name="IdDMA" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdSite" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="t_Site_Files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SiteId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="MIMEType" Type="varchar" MaxLength="4000" />
+    <Property Name="Size" Type="int" />
+    <Property Name="Path" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="UploadDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tmptawaco.dbo.t_Site_Group2s' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="t_Site_Group2s">
+    <Key>
+      <PropertyRef Name="Group" />
+      <PropertyRef Name="Description" />
+    </Key>
+    <Property Name="Group" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tmptawaco.dbo.t_Site_Group3s' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="t_Site_Group3s">
+    <Key>
+      <PropertyRef Name="Group" />
+    </Key>
+    <Property Name="Group" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tmptawaco.dbo.t_Site_Group4s' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="t_Site_Group4s">
+    <Key>
+      <PropertyRef Name="Group" />
+    </Key>
+    <Property Name="Group" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tmptawaco.dbo.t_Site_Group5s' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="t_Site_Group5s">
+    <Key>
+      <PropertyRef Name="Group" />
+    </Key>
+    <Property Name="Group" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="t_Site_Groups">
+    <Key>
+      <PropertyRef Name="Group" />
+    </Key>
+    <Property Name="Group" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="t_Site_Levels">
+    <Key>
+      <PropertyRef Name="Level" />
+    </Key>
+    <Property Name="Level" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="t_Site_MeterDirections">
+    <Key>
+      <PropertyRef Name="Direction" />
+    </Key>
+    <Property Name="Direction" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="t_Site_Sites">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OldId" Type="varchar" MaxLength="50" />
+    <Property Name="Location" Type="nvarchar" MaxLength="255" />
+    <Property Name="Longitude" Type="float" />
+    <Property Name="Latitude" Type="float" />
+    <Property Name="ViewGroup" Type="nvarchar" MaxLength="255" />
+    <Property Name="StaffId" Type="varchar" MaxLength="5" />
+    <Property Name="Meter" Type="varchar" MaxLength="50" />
+    <Property Name="Transmitter" Type="varchar" MaxLength="50" />
+    <Property Name="Logger" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateOfMeterChange" Type="datetime" />
+    <Property Name="DateOfLoggerChange" Type="datetime" />
+    <Property Name="DateOfTransmitterChange" Type="datetime" />
+    <Property Name="DateOfBatteryChange" Type="datetime" />
+    <Property Name="DateOfTransmitterBatteryChange" Type="datetime" />
+    <Property Name="DateOfLoggerBatteryChange" Type="datetime" />
+    <Property Name="DescriptionOfChange" Type="nvarchar" MaxLength="255" />
+    <Property Name="ChangeIndex" Type="float" />
+    <Property Name="Level" Type="varchar" MaxLength="5" />
+    <Property Name="Group" Type="varchar" MaxLength="5" />
+    <Property Name="Company" Type="varchar" MaxLength="5" />
+    <Property Name="TakeoverDate" Type="datetime" />
+    <Property Name="Takeovered" Type="bit" />
+    <Property Name="Status" Type="varchar" MaxLength="5" />
+    <Property Name="Availability" Type="varchar" MaxLength="5" />
+    <Property Name="Display" Type="bit" />
+    <Property Name="Property" Type="bit" />
+    <Property Name="UsingLogger" Type="bit" />
+    <Property Name="MeterDirection" Type="varchar" MaxLength="5" />
+    <Property Name="ProductionCompany" Type="varchar" MaxLength="5" />
+    <Property Name="IstDistributionCompany" Type="varchar" MaxLength="5" />
+    <Property Name="QndDistributionCompany" Type="varchar" MaxLength="5" />
+    <Property Name="IstDoNotCalculateReverse" Type="bit" />
+    <Property Name="QndDoNotCalculateReverse" Type="bit" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="ChangeIndex1" Type="float" />
+    <Property Name="Group2" Type="varchar" MaxLength="5" />
+    <Property Name="Address" Type="nvarchar" MaxLength="4000" />
+    <Property Name="CoverID" Type="varchar" MaxLength="50" />
+    <Property Name="Group3" Type="varchar" MaxLength="50" />
+    <Property Name="Group4" Type="varchar" MaxLength="50" />
+    <Property Name="Group5" Type="varchar" MaxLength="50" />
+    <Property Name="District" Type="nvarchar" MaxLength="4000" />
+    <Property Name="DMAOut" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="t_Site_Status">
+    <Key>
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="Status" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="t_Site_ViewGroups">
+    <Key>
+      <PropertyRef Name="Group" />
+    </Key>
+    <Property Name="Group" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_Staff_Site' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_Staff_Site">
+          <Property Name="IdStaff" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdSite" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_Status_DMA' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_Status_DMA">
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_Supervisor_District' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_Supervisor_District">
+          <Property Name="IdStaff" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdDistrict" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tmptawaco.dbo.t_Turn_History_Alarm' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="t_Turn_History_Alarm">
+          <Property Name="IsOn" Type="bit" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="t_User_Roles">
+    <Key>
+      <PropertyRef Name="Role" />
+    </Key>
+    <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="t_User_Staffs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="t_User_Users">
+    <Key>
+      <PropertyRef Name="Uid" />
+    </Key>
+    <Property Name="Uid" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StaffId" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pwd" Type="nvarchar" MaxLength="50" />
+    <Property Name="Salt" Type="nvarchar" MaxLength="50" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="TimeStamp" Type="datetime" />
+    <Property Name="Ip" Type="nvarchar" MaxLength="50" />
+    <Property Name="LogCount" Type="int" />
+    <Property Name="Zoom" Type="tinyint" />
+    <Property Name="Company" Type="nvarchar" MaxLength="50" />
+    <Property Name="Language" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Function Name="Autoupdate_FillData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="nvarchar" Mode="In" />
+    <Parameter Name="time" Type="datetime" Mode="In" />
+    <Parameter Name="value" Type="float" Mode="In" />
+  </Function>
+  <Function Name="Autoupdate_LastRows" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Max" Type="datetime" Mode="InOut" />
+  </Function>
+  <Function Name="Autoupdate_Null" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Day" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Autoupdate_UpdateNull" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="nvarchar" Mode="In" />
+    <Parameter Name="time" Type="datetime" Mode="In" />
+    <Parameter Name="value" Type="float" Mode="In" />
+  </Function>
+  <Function Name="InsertDeviceToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Token" Type="ntext" Mode="In" />
+  </Function>
+  <Function Name="NewDeleteCommand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Original_Uid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="NewInsertCommand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Uid" Type="nvarchar" Mode="In" />
+    <Parameter Name="StaffId" Type="varchar" Mode="In" />
+    <Parameter Name="Pwd" Type="nvarchar" Mode="In" />
+    <Parameter Name="Salt" Type="nvarchar" Mode="In" />
+    <Parameter Name="Role" Type="nvarchar" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+    <Parameter Name="TimeStamp" Type="datetime" Mode="In" />
+    <Parameter Name="Ip" Type="nvarchar" Mode="In" />
+    <Parameter Name="LogCount" Type="int" Mode="In" />
+    <Parameter Name="Zoom" Type="tinyint" Mode="In" />
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="Language" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="NewSelectCommand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="NewUpdateCommand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Uid" Type="nvarchar" Mode="In" />
+    <Parameter Name="StaffId" Type="varchar" Mode="In" />
+    <Parameter Name="Pwd" Type="nvarchar" Mode="In" />
+    <Parameter Name="Salt" Type="nvarchar" Mode="In" />
+    <Parameter Name="Role" Type="nvarchar" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+    <Parameter Name="TimeStamp" Type="datetime" Mode="In" />
+    <Parameter Name="Ip" Type="nvarchar" Mode="In" />
+    <Parameter Name="LogCount" Type="int" Mode="In" />
+    <Parameter Name="Zoom" Type="tinyint" Mode="In" />
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="Language" Type="varchar" Mode="In" />
+    <Parameter Name="Original_Uid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Data_DMA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dmaid" Type="nvarchar" Mode="In" />
+    <Parameter Name="start" Type="datetime" Mode="In" />
+    <Parameter Name="end" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Output_All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Output_All_Org" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="startDate" Type="datetime" Mode="In" />
+    <Parameter Name="endDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Output_By_Company" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Output_By_Company_Org" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="company" Type="varchar" Mode="In" />
+    <Parameter Name="startDate" Type="datetime" Mode="In" />
+    <Parameter Name="endDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Output_By_Group" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Group" Type="varchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Output_By_Group_Org" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Group" Type="varchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Output_By_Group2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Group" Type="varchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Output_By_Group3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Group" Type="varchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Output_By_Group4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Group" Type="varchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Output_By_Group5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Group" Type="varchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Output_By_Level" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Level" Type="varchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Output_By_Level_Org" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Level" Type="varchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Output_Org" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Report" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Daily_Site" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="siteid" Type="nvarchar" Mode="In" />
+    <Parameter Name="start" Type="datetime" Mode="In" />
+    <Parameter Name="end" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Hourly_Data_DMA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dmaid" Type="nvarchar" Mode="In" />
+    <Parameter Name="start" Type="datetime" Mode="In" />
+    <Parameter Name="end" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Hourly_Output_All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Hourly_Site" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="siteid" Type="nvarchar" Mode="In" />
+    <Parameter Name="start" Type="datetime" Mode="In" />
+    <Parameter Name="end" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Logger_Daily_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Monthly_Data_DMA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dmaid" Type="nvarchar" Mode="In" />
+    <Parameter Name="start" Type="datetime" Mode="In" />
+    <Parameter Name="end" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Monthly_Output_All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Monthly_Site" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="siteid" Type="nvarchar" Mode="In" />
+    <Parameter Name="start" Type="datetime" Mode="In" />
+    <Parameter Name="end" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Company_Hourly_Out_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Company_Hourly_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Company_Monthly_Out_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Company_Monthly_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Company_Out_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Company_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Group_Daily_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Group" Type="nvarchar" Mode="In" />
+    <Parameter Name="Start" Type="datetime" Mode="In" />
+    <Parameter Name="End" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Group2_Daily_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Group" Type="nvarchar" Mode="In" />
+    <Parameter Name="Start" Type="datetime" Mode="In" />
+    <Parameter Name="End" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Group3_Daily_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Group" Type="nvarchar" Mode="In" />
+    <Parameter Name="Start" Type="datetime" Mode="In" />
+    <Parameter Name="End" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Group4_Daily_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Group" Type="nvarchar" Mode="In" />
+    <Parameter Name="Start" Type="datetime" Mode="In" />
+    <Parameter Name="End" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Group5_Daily_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Group" Type="nvarchar" Mode="In" />
+    <Parameter Name="Start" Type="datetime" Mode="In" />
+    <Parameter Name="End" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_MCompany_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Site_Daily_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+    <Parameter Name="Start" Type="datetime" Mode="In" />
+    <Parameter Name="End" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Site_Hourly_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+    <Parameter Name="Start" Type="datetime" Mode="In" />
+    <Parameter Name="End" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Site_Montly_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+    <Parameter Name="Start" Type="datetime" Mode="In" />
+    <Parameter Name="End" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_One_Site_Yearly_Output" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+    <Parameter Name="Start" Type="datetime" Mode="In" />
+    <Parameter Name="End" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calculate_Yearly_Site" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="siteid" Type="nvarchar" Mode="In" />
+    <Parameter Name="start" Type="datetime" Mode="In" />
+    <Parameter Name="end" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calcutale_Daily_Site_One_Time" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="siteid" Type="nvarchar" Mode="In" />
+    <Parameter Name="start" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Calcutale_Hourly_Site_One_Time" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="siteid" Type="nvarchar" Mode="In" />
+    <Parameter Name="start" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Data_Logger_CreateTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="channelId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="p_Data_Logger_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="siteId" Type="varchar" Mode="In" />
+    <Parameter Name="startDate" Type="datetime" Mode="In" />
+    <Parameter Name="endDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Data_Manual_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+    <Parameter Name="SiteId" Type="varchar" Mode="In" />
+    <Parameter Name="Success" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="p_Data_Manual_InsertOrUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="varchar" Mode="In" />
+    <Parameter Name="TimeStamp" Type="datetime" Mode="In" />
+    <Parameter Name="Index" Type="float" Mode="In" />
+    <Parameter Name="Output" Type="float" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Success" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="p_Get_Data_Logger_Complex" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="siteid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="p_GetChannelByLoggerId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="loggerid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="p_GetDataDeviceToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="p_History_Site_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="siteId" Type="varchar" Mode="In" />
+    <Parameter Name="success" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="p_History_Site_InsertOrUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="varchar" Mode="In" />
+    <Parameter Name="Date" Type="datetime" Mode="In" />
+    <Parameter Name="Meter" Type="bit" Mode="In" />
+    <Parameter Name="SerialMeter" Type="varchar" Mode="In" />
+    <Parameter Name="Transmitter" Type="bit" Mode="In" />
+    <Parameter Name="SerialTransmitter" Type="varchar" Mode="In" />
+    <Parameter Name="Logger" Type="bit" Mode="In" />
+    <Parameter Name="SerialLogger" Type="varchar" Mode="In" />
+    <Parameter Name="Battery" Type="bit" Mode="In" />
+    <Parameter Name="TransmitterBattery" Type="bit" Mode="In" />
+    <Parameter Name="LoggerBattery" Type="bit" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Index" Type="float" Mode="In" />
+    <Parameter Name="Success" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="p_History_Site_Logger_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateChanged" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_History_Site_Logger_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateChanged" Type="datetime" Mode="In" />
+    <Parameter Name="OldMeterSerial" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewMeterSerial" Type="nvarchar" Mode="In" />
+    <Parameter Name="OldIndex" Type="float" Mode="In" />
+    <Parameter Name="NewIndex" Type="float" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="p_History_Site_Logger_Select_By_SiteId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="p_History_Site_Logger_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateChanged" Type="datetime" Mode="In" />
+    <Parameter Name="OldMeterSerial" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewMeterSerial" Type="nvarchar" Mode="In" />
+    <Parameter Name="OldIndex" Type="float" Mode="In" />
+    <Parameter Name="NewIndex" Type="float" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="p_History_Site_Meter_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateChanged" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_History_Site_Meter_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateChanged" Type="datetime" Mode="In" />
+    <Parameter Name="OldMeterSerial" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewMeterSerial" Type="nvarchar" Mode="In" />
+    <Parameter Name="OldIndex" Type="float" Mode="In" />
+    <Parameter Name="NewIndex" Type="float" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="p_History_Site_Meter_Select_By_SiteId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="p_History_Site_Meter_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateChanged" Type="datetime" Mode="In" />
+    <Parameter Name="OldMeterSerial" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewMeterSerial" Type="nvarchar" Mode="In" />
+    <Parameter Name="OldIndex" Type="float" Mode="In" />
+    <Parameter Name="NewIndex" Type="float" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="p_History_Site_Transmitter_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateChanged" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_History_Site_Transmitter_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateChanged" Type="datetime" Mode="In" />
+    <Parameter Name="OldMeterSerial" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewMeterSerial" Type="nvarchar" Mode="In" />
+    <Parameter Name="OldIndex" Type="float" Mode="In" />
+    <Parameter Name="NewIndex" Type="float" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="p_History_Site_Transmitter_Select_By_SiteId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="p_History_Site_Transmitter_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SiteId" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateChanged" Type="datetime" Mode="In" />
+    <Parameter Name="OldMeterSerial" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewMeterSerial" Type="nvarchar" Mode="In" />
+    <Parameter Name="OldIndex" Type="float" Mode="In" />
+    <Parameter Name="NewIndex" Type="float" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="p_Map_GetChannels_ByLoggerId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoggerId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="p_Map_GetSites_ByCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Company" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="p_RemoveTokenLogoutApp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Token" Type="ntext" Mode="In" />
+  </Function>
+  <Function Name="p_test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Company" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="p_Total_DMA_Error" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="p_Total_Site_Action" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="p_Total_Site_Error" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="p_Total_Site_Has_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateStatusPushNoti" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Token" Type="nvarchar" Mode="In" />
+    <Parameter Name="Status" Type="bit" Mode="In" />
+  </Function>
+  <EntityContainer Name="tmptawacoModelStoreContainer">
+    <EntitySet Name="DeviceTokenApp" EntityType="Self.DeviceTokenApp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Data_Manual" EntityType="Self.t_Data_Manual" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Devices_ChannelsConfigs" EntityType="Self.t_Devices_ChannelsConfigs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Devices_Loggers" EntityType="Self.t_Devices_Loggers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Devices_Meter_Accreditation_Type" EntityType="Self.t_Devices_Meter_Accreditation_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Devices_Meters" EntityType="Self.t_Devices_Meters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Devices_SitesConfigs" EntityType="Self.t_Devices_SitesConfigs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Devices_Status" EntityType="Self.t_Devices_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Devices_Transmitters" EntityType="Self.t_Devices_Transmitters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Devices_Units" EntityType="Self.t_Devices_Units" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Gis_Sites" EntityType="Self.t_Gis_Sites" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Meter_Files" EntityType="Self.t_Meter_Files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Site_Availabilities" EntityType="Self.t_Site_Availabilities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Site_Companies" EntityType="Self.t_Site_Companies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Site_Covers" EntityType="Self.t_Site_Covers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Site_Files" EntityType="Self.t_Site_Files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Site_Groups" EntityType="Self.t_Site_Groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Site_Levels" EntityType="Self.t_Site_Levels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Site_MeterDirections" EntityType="Self.t_Site_MeterDirections" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Site_Sites" EntityType="Self.t_Site_Sites" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Site_Status" EntityType="Self.t_Site_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Site_ViewGroups" EntityType="Self.t_Site_ViewGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_User_Roles" EntityType="Self.t_User_Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_User_Staffs" EntityType="Self.t_User_Staffs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_User_Users" EntityType="Self.t_User_Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_History_Site_Loggers" EntityType="Self.t_History_Site_Loggers" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [t_History_Site_Loggers].[DateChanged] AS [DateChanged], 
+    [t_History_Site_Loggers].[SiteId] AS [SiteId], 
+    [t_History_Site_Loggers].[OldMeterSerial] AS [OldMeterSerial], 
+    [t_History_Site_Loggers].[NewMeterSerial] AS [NewMeterSerial], 
+    [t_History_Site_Loggers].[OldMeterIndex] AS [OldMeterIndex], 
+    [t_History_Site_Loggers].[NewMeterIndex] AS [NewMeterIndex], 
+    [t_History_Site_Loggers].[Description] AS [Description]
+    FROM [dbo].[t_History_Site_Loggers] AS [t_History_Site_Loggers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="t_History_Site_Meters" EntityType="Self.t_History_Site_Meters" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [t_History_Site_Meters].[DateChanged] AS [DateChanged], 
+    [t_History_Site_Meters].[SiteId] AS [SiteId], 
+    [t_History_Site_Meters].[OldMeterSerial] AS [OldMeterSerial], 
+    [t_History_Site_Meters].[NewMeterSerial] AS [NewMeterSerial], 
+    [t_History_Site_Meters].[OldMeterIndex] AS [OldMeterIndex], 
+    [t_History_Site_Meters].[NewMeterIndex] AS [NewMeterIndex], 
+    [t_History_Site_Meters].[Description] AS [Description]
+    FROM [dbo].[t_History_Site_Meters] AS [t_History_Site_Meters]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="t_History_Site_Transmitters" EntityType="Self.t_History_Site_Transmitters" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [t_History_Site_Transmitters].[DateChanged] AS [DateChanged], 
+    [t_History_Site_Transmitters].[SiteId] AS [SiteId], 
+    [t_History_Site_Transmitters].[OldMeterSerial] AS [OldMeterSerial], 
+    [t_History_Site_Transmitters].[NewMeterSerial] AS [NewMeterSerial], 
+    [t_History_Site_Transmitters].[OldMeterIndex] AS [OldMeterIndex], 
+    [t_History_Site_Transmitters].[NewMeterIndex] AS [NewMeterIndex], 
+    [t_History_Site_Transmitters].[Description] AS [Description]
+    FROM [dbo].[t_History_Site_Transmitters] AS [t_History_Site_Transmitters]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="t_History_Sites" EntityType="Self.t_History_Sites" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [t_History_Sites].[SiteId] AS [SiteId], 
+    [t_History_Sites].[Date] AS [Date], 
+    [t_History_Sites].[Meter] AS [Meter], 
+    [t_History_Sites].[SerialMeter] AS [SerialMeter], 
+    [t_History_Sites].[Transmitter] AS [Transmitter], 
+    [t_History_Sites].[SerialTransmitter] AS [SerialTransmitter], 
+    [t_History_Sites].[Logger] AS [Logger], 
+    [t_History_Sites].[SeriLogger] AS [SeriLogger], 
+    [t_History_Sites].[Battery] AS [Battery], 
+    [t_History_Sites].[TransmitterBattery] AS [TransmitterBattery], 
+    [t_History_Sites].[LoggerBattery] AS [LoggerBattery], 
+    [t_History_Sites].[Description] AS [Description], 
+    [t_History_Sites].[Index] AS [Index]
+    FROM [dbo].[t_History_Sites] AS [t_History_Sites]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="t_Site_Group2s" EntityType="Self.t_Site_Group2s" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [t_Site_Group2s].[Group] AS [Group], 
+    [t_Site_Group2s].[Description] AS [Description]
+    FROM [dbo].[t_Site_Group2s] AS [t_Site_Group2s]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="t_Site_Group3s" EntityType="Self.t_Site_Group3s" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [t_Site_Group3s].[Group] AS [Group], 
+    [t_Site_Group3s].[Description] AS [Description]
+    FROM [dbo].[t_Site_Group3s] AS [t_Site_Group3s]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="t_Site_Group4s" EntityType="Self.t_Site_Group4s" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [t_Site_Group4s].[Group] AS [Group], 
+    [t_Site_Group4s].[Description] AS [Description]
+    FROM [dbo].[t_Site_Group4s] AS [t_Site_Group4s]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="t_Site_Group5s" EntityType="Self.t_Site_Group5s" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [t_Site_Group5s].[Group] AS [Group], 
+    [t_Site_Group5s].[Description] AS [Description]
+    FROM [dbo].[t_Site_Group5s] AS [t_Site_Group5s]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
